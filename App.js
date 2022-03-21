@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
-import styles from "./Styles";
-import Login from "./components/Login";
+import styles from "./src/styles/Styles";
+import Login from "./src/components/Login";
 
 export default function App() {
   return (
