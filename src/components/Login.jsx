@@ -1,4 +1,4 @@
-import { Button, Text, TextInput, View } from "react-native-web";
+import { Button, Text, TextInput, View } from "react-native";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
