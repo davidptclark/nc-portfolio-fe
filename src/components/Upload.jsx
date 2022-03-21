@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, TextInput, Button, Video } from "react-native";
-import { useCallback, useState } from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 
 export default Upload = () => {
@@ -13,8 +13,6 @@ export default Upload = () => {
       aspect: [4, 3],
       quality: 1,
     });
-
-    // console.log(result);
 
     if (!result.cancelled) {
       setImage(result.uri);
