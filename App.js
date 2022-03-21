@@ -40,14 +40,10 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   const [user, setUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(true);
   return (
-    <View>
-      <UserContext.Provider value={{ user, setUser }}>
-        <View style={styles.container}>
-          <Login />
-          <StatusBar style="auto" />
-        </View>
-      </UserContext.Provider>
+    <UserContext.Provider value={{ user, setUser }}>
+      {/* <Login /> */}
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
@@ -73,11 +69,11 @@ export default function App() {
           <Tab.Screen name="Upload" component={UploadScreen} />
           <Tab.Screen
             name="Profile"
-            component={UserProfileScreen}
+            component={loggedIn && UserProfileScreen}
             options={{ tabBarBadge: 3 }}
           />
         </Tab.Navigator>
       </NavigationContainer>
-    </View>
+    </UserContext.Provider>
   );
 }
