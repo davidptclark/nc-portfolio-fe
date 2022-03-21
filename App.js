@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-
+import Upload from "./src/components/Upload"
 import styles from "./src/styles/Styles";
 import Login from "./src/components/Login";
 import { UserContext } from "./src/contexts/UserContext";
@@ -66,7 +66,7 @@ export default function App() {
           })}
         >
           <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Upload" component={UploadScreen} />
+          <Tab.Screen name="Upload" component={Upload} />
           <Tab.Screen
             name="Profile"
             component={loggedIn && UserProfileScreen}
