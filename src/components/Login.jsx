@@ -43,6 +43,12 @@ const Login = () => {
         color="#841584"
         accessibilityLabel="log in"
       />
+      <Button
+        onPress={() => {}}
+        title="Sign Up"
+        color="green"
+        accessibilityLabel="Sign up"
+      />
     </View>
   );
 };
