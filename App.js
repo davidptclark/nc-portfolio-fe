@@ -1,3 +1,13 @@
+
+import { StatusBar } from "expo-status-bar";
+
+import styles from "./src/styles/Styles";
+import Login from "./src/components/Login";
+import { UserContext } from "./src/contexts/UserContext";
+import { useState } from "react";
+
+
+
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -32,7 +42,14 @@ function UserProfileScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+   const [user, setUser] = useState({});
   return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <View style={styles.container}>
+        <Login />
+        <StatusBar style="auto" />
+      </View>
+    </UserContext.Provider>
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -65,3 +82,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
