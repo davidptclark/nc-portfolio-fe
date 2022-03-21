@@ -1,11 +1,8 @@
-import { View, Text, StyleSheet, TextInput, Button, Image, Video } from "react-native";
-import { useCallback, useState} from "react";
-import { useDropzone } from "react-dropzone";
-import * as ImagePicker from 'expo-image-picker';
-
+import { View, Text, StyleSheet, TextInput, Button, Video } from "react-native";
+import { useCallback, useState } from "react";
+import * as ImagePicker from "expo-image-picker";
 
 export default Upload = () => {
-
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -17,48 +14,53 @@ export default Upload = () => {
       quality: 1,
     });
 
-    console.log(result);
+    // console.log(result);
 
     if (!result.cancelled) {
       setImage(result.uri);
     }
   };
 
+  function handleSubmit(file) {
+    if (file !== null) {
+      const url = `https://api.cloudinary.com/v1_1/ncfiveguysuk/auto/upload`;
+
+      let newfile = {
+        uri: file,
+        type: `test/${file.split(".")[1]}`,
+        name: `test.${file.split(".")[1]}`,
+      };
+
+      const formData = new FormData();
+      formData.append("file", newfile);
+      formData.append("upload_preset", "jycjtlpe");
+      formData.append("tags", "test");
+
+      fetch(url, {
+        method: "post",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+  }
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      {image && <Text>Your video is ready to be uploaded</Text>}
+      <Button
+        title={
+          image === null
+            ? "Pick an image from camera roll"
+            : "Press to change selection"
+        }
+        onPress={pickImage}
+      />
+      <Button title="Upload" onPress={() => handleSubmit(image)} />
     </View>
   );
- 
-
-      {/* 
-
-    <DropZone />
-    <TextForm (for bio, tags etc.) />
-    <ProgressBar />  
-  */}
- 
 };
 
 const styles = StyleSheet.create({
   uploadContainer: {},
 });
-// function App() {
-
-//   return (
-//     <div className="App">
-//       <header className="App-header">Upload a photo to cloudinary</header>
-//       <div {...getRootProps()}>
-//         <input {...getInputProps()} />
-//         {isDragActive ? (
-//           <p>Drop the files here ...</p>
-//         ) : (
-//           <p>Drag 'n' drop some files here, or click to select files</p>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;
