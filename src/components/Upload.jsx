@@ -1,7 +1,9 @@
-import { View, Text, StyleSheet, Button, ActivityIndicator } from "react-native";
+import { View, Text, StyleSheet, Button, ActivityIndicator, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import axios from "axios";
+
+import Tags from "react-native-tags";
 
 export default Upload = () => {
   const [image, setImage] = useState(null);
@@ -53,6 +55,33 @@ export default Upload = () => {
     }
   }
 
+  const MyTagInput = () => (
+    <Tags
+      style={styles.container}
+      initialText=""
+      textInputProps={{
+        placeholder: "Add your technology"
+      }}
+      initialTags={["JS"]}
+      onChangeTags={tags => console.log(tags)}
+      onTagPress={(index, tagLabel, event, deleted) =>
+        console.log(index, tagLabel, event, deleted ? "deleted" : "not deleted")
+      }
+      containerStyle={{ justifyContent: "center" }}
+      inputStyle={{ backgroundColor: "white" }}
+      // tagContainerStyle={styles.tag}
+      // tagTextStyle={styles.textTag}
+      renderTag={({ tag, index, onPress, readonly }) => (
+        <TouchableOpacity key={`${tag}-${index}`} onPress={onPress}
+          >
+        <Text style={styles.textTag}>{tag}</Text>
+ 
+        </TouchableOpacity>
+      )}
+
+    />
+  );
+
 const render = () => {
   if (isLoading === false) {
     return (
@@ -67,8 +96,12 @@ const render = () => {
         onPress={pickImage}
       />
       <Button title="Upload" onPress={() => handleSubmit(image)} />
+
+      {MyTagInput()}
     </View>
     )
+
+  
   }
   else{
     return (
@@ -91,8 +124,23 @@ const render = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center"
+   
+    justifyContent: "center",
+    flexDirection: "column-reverse"
   },
+  tag: {
+    backgroundColor: '#2A5353',
+    borderRadius: 10,
+    padding: 5,
+    margin: 10,
+    maxWidth: 70,
+
+    
+  },
+  textTag: {
+    color: '#EBEBEB',
+    fontWeight: 'bold',
+  }
 
 });
 
