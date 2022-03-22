@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, ActivityIndicator } from "react-native";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 
 export default Upload = () => {
   const [image, setImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -21,6 +22,9 @@ export default Upload = () => {
 
   function handleSubmit(file) {
     if (file !== null) {
+     
+      setIsLoading(true);
+
       const url = `https://api.cloudinary.com/v1_1/ncfiveguysuk/auto/upload`;
 
       let newfile = {
@@ -39,12 +43,18 @@ export default Upload = () => {
         body: formData,
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          setIsLoading(false);
+          setImage(null);
+          console.log(data)
+        });
     }
   }
 
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+const render = () => {
+  if (isLoading === false) {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       {image && <Text>Your video is ready to be uploaded</Text>}
       <Button
         title={
@@ -56,9 +66,35 @@ export default Upload = () => {
       />
       <Button title="Upload" onPress={() => handleSubmit(image)} />
     </View>
+    )
+  }
+  else{
+    return (
+      <View style={[styles.container, styles.horizontal]}>
+           <ActivityIndicator size="large" color="#0000ff"/>
+      </View>
+    )
+  }
+}
+
+  return (
+    <>
+   {
+     render()
+   }
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  uploadContainer: {},
+  container: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  // horizontal: {
+  //   flexDirection: "row",
+  //   justifyContent: "space-around",
+  //   padding: 10
+  // }
 });
+
