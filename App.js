@@ -18,7 +18,11 @@ import { LoginContext } from "./src/contexts/LoginContext";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?",
+  });
   //State used to toggle view of UserProfile nav button
   const [loggedIn, setLoggedIn] = useState(false);
   return (

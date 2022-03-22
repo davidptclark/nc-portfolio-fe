@@ -1,15 +1,21 @@
-import { Text, View, Button } from "react-native";
+import { Text, View, Button, Image } from "react-native";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { LoginContext } from "../contexts/LoginContext";
+import styles from "../styles/Styles";
+import avatar from "../../avatar.jpg";
 export default UserPage = () => {
   const { user } = useContext(UserContext);
   const { setLoggedIn } = useContext(LoginContext);
-  console.log(user);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>{user.username}</Text>
+      <Image
+        style={styles.avatarUrl}
+        source={user.avatarUrl ? { uri: user.avatarUrl } : avatar}
+      />
+      <Text style={styles.username}>{user.username}</Text>
       <Text>Welcome to your profile</Text>
+      <Text style={styles.bio}>{user.bio}</Text>
       <Button
         onPress={() => {
           setLoggedIn(false);
