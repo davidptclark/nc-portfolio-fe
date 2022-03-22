@@ -2,10 +2,17 @@ import { Button, Text, TextInput, View } from "react-native";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
+import { LoginContext } from "../contexts/LoginContext";
 
 const Login = () => {
-  const [newUser, setNewUser] = useState({ username: "", password: "" });
+  const [newUser, setNewUser] = useState({
+    username: "",
+    password: "",
+    bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?",
+    user_type: "Graduate",
+  });
   const { setUser } = useContext(UserContext);
+  const { setLoggedIn } = useContext(LoginContext);
   return (
     <View>
       <Text style={styles.text}>Log in</Text>
@@ -14,7 +21,7 @@ const Login = () => {
         style={styles.textInput}
         placeholder="Username"
         onChangeText={(newUsername) =>
-          setUser((currentUser) => {
+          setNewUser((currentUser) => {
             const newUser = { ...currentUser };
             newUser.username = newUsername;
             return newUser;
@@ -26,7 +33,7 @@ const Login = () => {
         style={styles.textInput}
         placeholder="Password"
         onChangeText={(newPassword) =>
-          setUser((currentUser) => {
+          setNewUser((currentUser) => {
             const newUser = { ...currentUser };
             newUser.password = newPassword;
             return newUser;
@@ -37,7 +44,7 @@ const Login = () => {
       <Button
         onPress={() => {
           setUser(newUser);
-          setNewUser({ username: "", password: "" });
+          setLoggedIn(true);
         }}
         title="Login"
         color="#841584"
