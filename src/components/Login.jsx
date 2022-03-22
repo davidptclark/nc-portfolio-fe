@@ -16,7 +16,7 @@ const Login = () => {
         style={styles.textInput}
         placeholder="Username"
         onChangeText={(newUsername) =>
-          setUser((currentUser) => {
+          setNewUser((currentUser) => {
             const newUser = { ...currentUser };
             newUser.username = newUsername;
             return newUser;
@@ -28,7 +28,7 @@ const Login = () => {
         style={styles.textInput}
         placeholder="Password"
         onChangeText={(newPassword) =>
-          setUser((currentUser) => {
+          setNewUser((currentUser) => {
             const newUser = { ...currentUser };
             newUser.password = newPassword;
             return newUser;
