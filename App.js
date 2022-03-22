@@ -22,6 +22,7 @@ export default function App() {
     username: "",
     password: "",
     bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?",
+    user_type: "Graduate",
   });
   //State used to toggle view of UserProfile nav button
   const [loggedIn, setLoggedIn] = useState(false);

@@ -14,7 +14,7 @@ export default UserPage = () => {
         source={user.avatarUrl ? { uri: user.avatarUrl } : avatar}
       />
       <Text style={styles.username}>{user.username}</Text>
-      <Text>Welcome to your profile</Text>
+      <Text style={styles.userType}>{user.user_type}</Text>
       <Text style={styles.bio}>{user.bio}</Text>
       <Button
         onPress={() => {

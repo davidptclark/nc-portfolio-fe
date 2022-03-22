@@ -9,6 +9,7 @@ const Login = () => {
     username: "",
     password: "",
     bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?",
+    user_type: "Graduate",
   });
   const { setUser } = useContext(UserContext);
   const { setLoggedIn } = useContext(LoginContext);
@@ -44,11 +45,6 @@ const Login = () => {
         onPress={() => {
           setUser(newUser);
           setLoggedIn(true);
-          setNewUser({
-            username: "",
-            password: "",
-            bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?",
-          });
         }}
         title="Login"
         color="#841584"

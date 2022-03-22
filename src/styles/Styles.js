@@ -26,7 +26,16 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
   },
-  username: {},
-  bio: {},
+  username: {
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  bio: {
+    textAlign: "center",
+    margin: 10,
+  },
+  userType: {
+    fontWeight: "bold",
+  },
 });
 export default styles;
