@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import Upload from "./src/components/Upload"
+import Upload from "./src/components/Upload";
 import styles from "./src/styles/Styles";
 import Login from "./src/components/Login";
 import { UserContext } from "./src/contexts/UserContext";
@@ -9,24 +8,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Home from "./src/components/Home";
 
 // These are example components to check that the nav bar works
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function UploadScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Upload your video</Text>
-    </View>
-  );
-}
 
 function UserProfileScreen() {
   return (
@@ -40,10 +24,9 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      {/* <Login /> */}
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
@@ -65,11 +48,11 @@ export default function App() {
             tabBarInactiveTintColor: "gray",
           })}
         >
-          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Home" component={Home} />
           <Tab.Screen name="Upload" component={Upload} />
           <Tab.Screen
             name="Profile"
-            component={loggedIn && UserProfileScreen}
+            component={loggedIn ? UserProfileScreen : Login}
             options={{ tabBarBadge: 3 }}
           />
         </Tab.Navigator>

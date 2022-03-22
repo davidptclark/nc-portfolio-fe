@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native-web";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -12,9 +12,14 @@ const styles = StyleSheet.create({
   },
   textInput: {
     backgroundColor: "white",
-    borderStyle: "Solid",
+    borderStyle: "solid",
     borderColor: "black",
     borderWidth: 2,
+  },
+  video: {
+    alignSelf: "center",
+    width: 320,
+    height: 200,
   },
 });
 export default styles;

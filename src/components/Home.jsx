@@ -1,8 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import { Video, AVPlaybackStatus } from "expo-av";
 import { Cloudinary } from "@cloudinary/url-gen";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FlatList } from "react-native";
+import axios from "axios";
+import styles from "../styles/Styles";
 
 export default Home = () => {
   const [videos, setVideos] = useState([]);
@@ -22,26 +24,27 @@ export default Home = () => {
   }, []);
 
   return (
-    <View style={homeContainer}>
+    <View style={styles.container}>
       <FlatList
         data={videos.map((video) => {
-          return cld.video(video.public_id).toURL();
+          return {
+            url: cld.video(video.public_id).toURL(),
+            id: video.public_id,
+          };
         })}
         renderItem={({ item }) => (
           <Video
+            style={styles.video}
             source={{
-              uri: item,
+              uri: item.url,
             }}
             useNativeControls
             resizeMode="contain"
             isLooping
           />
         )}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  homeContainer: {},
-});
