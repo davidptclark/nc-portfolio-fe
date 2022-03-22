@@ -2,10 +2,12 @@ import { Button, Text, TextInput, View } from "react-native";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
+import { LoginContext } from "../contexts/LoginContext";
 
 const Login = () => {
   const [newUser, setNewUser] = useState({ username: "", password: "" });
   const { setUser } = useContext(UserContext);
+  const { setLoggedIn } = useContext(LoginContext);
   return (
     <View>
       <Text style={styles.text}>Log in</Text>
@@ -37,6 +39,7 @@ const Login = () => {
       <Button
         onPress={() => {
           setUser(newUser);
+          setLoggedIn(true);
           setNewUser({ username: "", password: "" });
         }}
         title="Login"
