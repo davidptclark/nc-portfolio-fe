@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, Button, ActivityIndicator, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ActivityIndicator,
+  TouchableOpacity,
+} from "react-native";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import axios from "axios";
@@ -25,7 +32,6 @@ export default Upload = () => {
 
   function handleSubmit(file) {
     if (file !== null) {
-     
       setIsLoading(true);
 
       const url = `https://api.cloudinary.com/v1_1/ncfiveguysuk/auto/upload`;
@@ -49,98 +55,101 @@ export default Upload = () => {
         .then((data) => {
           setIsLoading(false);
           setImage(null);
-          alert("Your video has been uploaded sucessfully!")
-          console.log(data)
+          alert("Your video has been uploaded sucessfully!");
+          console.log(data);
         });
     }
   }
 
   const MyTagInput = () => (
     <Tags
-      style={styles.container}
       initialText=""
       textInputProps={{
-        placeholder: "Add your technology"
+        placeholder: "Add your technology",
       }}
-      initialTags={["JS"]}
-      onChangeTags={tags => console.log(tags)}
-      onTagPress={(index, tagLabel, event, deleted) =>
-        console.log(index, tagLabel, event, deleted ? "deleted" : "not deleted")
-      }
-      containerStyle={{ justifyContent: "center" }}
-      inputStyle={{ backgroundColor: "white" }}
-      // tagContainerStyle={styles.tag}
-      // tagTextStyle={styles.textTag}
+      // initialTags={["JS"]}
+      // onChangeTags={(tags) => console.log(tags)}
+      // onTagPress={(index, tagLabel, event, deleted) =>
+      //   console.log(index, tagLabel, event, deleted ? "deleted" : "not deleted")
+      // }
+      containerStyle={styles.tagContainer}
+      inputStyle={{ backgroundColor: "white", color: "black" }}
       renderTag={({ tag, index, onPress, readonly }) => (
-        <TouchableOpacity key={`${tag}-${index}`} onPress={onPress}
-          >
-        <Text style={styles.textTag}>{tag}</Text>
- 
+        <TouchableOpacity
+          style={styles.tag}
+          key={`${tag}-${index}`}
+          onPress={onPress}
+        >
+          <Text style={styles.textTag}>{tag}</Text>
         </TouchableOpacity>
       )}
-
     />
   );
 
-const render = () => {
-  if (isLoading === false) {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      {image && <Text>Your video is ready to be uploaded</Text>}
-      <Button
-        title={
-          image === null
-            ? "Pick an image from camera roll"
-            : "Press to change selection"
-        }
-        onPress={pickImage}
-      />
-      <Button title="Upload" onPress={() => handleSubmit(image)} />
+  const render = () => {
+    if (isLoading === false) {
+      return (
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          {image && <Text>Your video is ready to be uploaded</Text>}
+          <Button
+            title={
+              image === null
+                ? "Pick an image from camera roll"
+                : "Press to change selection"
+            }
+            onPress={pickImage}
+          />
+          <Text style={{ color: "#888", fontSize: 16 }}>
+            #Tags: Add your tag and then press space
+          </Text>
+          {MyTagInput()}
+          <Button title="Upload" onPress={() => handleSubmit(image)} />
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      );
+    }
+  };
 
-      {MyTagInput()}
-    </View>
-    )
-
-  
-  }
-  else{
-    return (
-      <View style={styles.container}>
-           <ActivityIndicator size="large" color="#0000ff"/>
-      </View>
-    )
-  }
-}
-
-  return (
-    <>
-   {
-     render()
-   }
-    </>
-  );
+  return <>{render()}</>;
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-   
+    flex: 1, //Keeps the loading wheel in the center of the page
     justifyContent: "center",
-    flexDirection: "column-reverse"
+    alignContent: "center",
+  },
+  tagContainer: {
+    margin: 10,
+    borderRadius: 10,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "flex-start",
+    width: 300,
   },
   tag: {
-    backgroundColor: '#2A5353',
+    backgroundColor: "#2A5353",
     borderRadius: 10,
-    padding: 5,
+    padding: 10,
     margin: 10,
-    maxWidth: 70,
-
-    
   },
   textTag: {
-    color: '#EBEBEB',
-    fontWeight: 'bold',
-  }
-
+    color: "#EBEBEB",
+    fontWeight: "bold",
+  },
+  input: {
+    backgroundColor: "#FFFFFF",
+    color: "#606060",
+    fontWeight: "bold",
+  },
 });
-
