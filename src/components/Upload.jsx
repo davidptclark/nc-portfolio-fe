@@ -5,6 +5,9 @@ import {
   Button,
   ActivityIndicator,
   TouchableOpacity,
+  TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
@@ -105,10 +108,21 @@ export default Upload = () => {
             }
             onPress={pickImage}
           />
-          <Text style={{ color: "#888", fontSize: 16 }}>
-            #Tags: Add your tag and then press space
-          </Text>
-          {MyTagInput()}
+          <View>
+            <Text style={{ color: "#888", fontSize: 16 }}>
+              #Tags: Add your tag and then press space
+            </Text>
+            {MyTagInput()}
+          </View>
+
+          <View>
+            <Text style={{ color: "#888", fontSize: 16 }}>Description:</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Write a brief description of your video"
+            />
+          </View>
+
           <Button title="Upload" onPress={() => handleSubmit(image)} />
         </View>
       );
@@ -121,7 +135,17 @@ export default Upload = () => {
     }
   };
 
-  return <>{render()}</>;
+  return (
+    <>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
+        {render()}
+      </TouchableWithoutFeedback>
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -151,5 +175,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     color: "#606060",
     fontWeight: "bold",
+  },
+  textInput: {
+    backgroundColor: "white",
+    height: 200,
+    width: 350,
   },
 });
