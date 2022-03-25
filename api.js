@@ -11,6 +11,8 @@ export const postCloudinary = (url, formData, tags) => {
   }).then((res) => res.json());
 };
 
-export const postVideoToDatabase = (videoData) => {
-  // return ncApi.post("/videos", videoData).then(() => {});
+export const postVideoToDatabase = (returnData) => {
+  const videoData = {};
+  console.log(returnData);
+  // return ncApi.post("/videos").then(() => {});
 };

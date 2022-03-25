@@ -14,7 +14,7 @@ import {
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 
-import { postCloudinary } from "../../api";
+import { postCloudinary, postVideoToDatabase } from "../../api";
 
 import AddTags from "./AddTags";
 
@@ -79,7 +79,8 @@ export default Upload = () => {
           alert("Your video has been uploaded sucessfully!");
           console.log(data);
           console.log(data.asset_id);
-        });
+        })
+        .catch(console.log);
       //Post video request.then()
     }
   }
