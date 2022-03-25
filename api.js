@@ -1,31 +1,16 @@
-export function handleUpload(file, setIsLoading, setImage) {
-  if (file !== null) {
-    setIsLoading(true);
+import axios from "axios";
 
-    const url = `https://api.cloudinary.com/v1_1/ncfiveguysuk/auto/upload`;
+const ncApi = axios.create({
+  baseURL: "https://nc-portfolio-app.herokuapp.com/api",
+});
 
-    let newfile = {
-      uri: file,
-      type: `test/${file.split(".")[1]}`,
-      name: `test.${file.split(".")[1]}`,
-    };
+export const postCloudinary = (url, formData) => {
+  return fetch(url, {
+    method: "post",
+    body: formData,
+  }).then((res) => res.json());
+};
 
-    const formData = new FormData();
-    formData.append("file", newfile);
-    formData.append("upload_preset", "jycjtlpe");
-    formData.append("tags", "test");
-
-    fetch(url, {
-      method: "post",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setIsLoading(false);
-        setImage(null);
-        alert("Your video has been uploaded sucessfully!");
-        console.log(data);
-        console.log(data.asset_id);
-      });
-  }
-}
+export const postVideoToDatabase = (videoData) => {
+  return ncApi.post("/videos", videoData).then(() => {});
+};

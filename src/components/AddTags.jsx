@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import Tags from "react-native-tags";
-export default AddTags = () => {
+export default AddTags = ({ tags, setTags }) => {
   return (
     <Tags
       initialText=""
@@ -14,12 +14,18 @@ export default AddTags = () => {
       // }
       containerStyle={styles.tagContainer}
       inputStyle={{ backgroundColor: "white", color: "black" }}
+      // onChangeTags={}
       renderTag={({ tag, index, onPress }) => (
         <TouchableOpacity
           style={styles.tag}
           key={`${tag}-${index}`}
           onPress={onPress}
         >
+          {setTags((currentTags) => {
+            const newTags = [tag, ...currentTags];
+            return newTags;
+          })}
+          {console.log(tags)}
           <Text style={styles.textTag}>{tag}</Text>
         </TouchableOpacity>
       )}

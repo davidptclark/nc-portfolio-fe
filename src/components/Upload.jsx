@@ -13,16 +13,19 @@ import {
 } from "react-native";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import axios from "axios";
-import { handleUpload } from "../../api";
+
+import { postCloudinary } from "../../api";
 
 import AddTags from "./AddTags";
+
+//Add user context
 
 export default Upload = () => {
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [titleText, setTitleText] = useState("");
   const [descriptionText, setDescriptionText] = useState("");
+  const [tags, setTags] = useState([]);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -38,30 +41,49 @@ export default Upload = () => {
     }
   };
 
-  // const MyTagInput = () => (
-  //   <Tags
-  //     initialText=""
-  //     textInputProps={{
-  //       placeholder: "Add your technology",
-  //     }}
-  //     // initialTags={["JS"]}
-  //     // onChangeTags={(tags) => console.log(tags)}
-  //     // onTagPress={(index, tagLabel, event, deleted) =>
-  //     //   console.log(index, tagLabel, event, deleted ? "deleted" : "not deleted")
-  //     // }
-  //     containerStyle={styles.tagContainer}
-  //     inputStyle={{ backgroundColor: "white", color: "black" }}
-  //     renderTag={({ tag, index, onPress }) => (
-  //       <TouchableOpacity
-  //         style={styles.tag}
-  //         key={`${tag}-${index}`}
-  //         onPress={onPress}
-  //       >
-  //         <Text style={styles.textTag}>{tag}</Text>
-  //       </TouchableOpacity>
-  //     )}
-  //   />
-  // );
+  function handleUpload(file) {
+    if (file !== null) {
+      setIsLoading(true);
+
+      const url = `https://api.cloudinary.com/v1_1/ncfiveguysuk/auto/upload`;
+
+      let newfile = {
+        uri: file,
+        type: `test/${file.split(".")[1]}`,
+        name: `test.${file.split(".")[1]}`,
+      };
+
+      const formData = new FormData();
+      formData.append("file", newfile);
+      formData.append("upload_preset", "jycjtlpe");
+      //Send tags array to cloudinary in here?
+      formData.append("tags", "test");
+
+      postCloudinary(url, formData).then((data) => {
+        const video_id = data.asset_id;
+        const videoData = {
+          title: titleText,
+          description: descriptionText,
+          cloudinary_id: video_id,
+          tags: tags,
+          username: user,
+        };
+
+        postVideoToDatabase(videoData).then(() => {
+          setIsLoading(false);
+          setImage(null);
+          setDescriptionText("");
+          setTitleText("");
+          setTags([]);
+
+          alert("Your video has been uploaded sucessfully!");
+          console.log(data);
+          console.log(data.asset_id);
+        });
+        //Post video request.then()
+      });
+    }
+  }
 
   const render = () => {
     if (isLoading === false) {
@@ -116,13 +138,10 @@ export default Upload = () => {
                   <Text style={{ color: "#888", fontSize: 16 }}>
                     Tags (Add your tag and then press space)
                   </Text>
-                  <AddTags />
+                  <AddTags tags={tags} setTags={setTags} />
                 </View>
 
-                <Button
-                  title="Upload"
-                  onPress={() => handleUpload(image, setIsLoading, setImage)}
-                />
+                <Button title="Upload" onPress={() => handleUpload(image)} />
 
                 <View></View>
               </View>
