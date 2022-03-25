@@ -9,12 +9,6 @@ export const postCloudinary = (url, formData, tags) => {
     method: "post",
     body: formData,
   }).then((res) => res.json());
-  // .then((data) => {
-  //   return fetch("https://api.cloudinary.com/v1_1/ncfiveguysuk/auto/tags", {
-  //     method: "post",
-  //     body: { tag: tags, public_id: data.asset_id, command: "add" },
-  //   });
-  // });
 };
 
 export const postVideoToDatabase = (videoData) => {

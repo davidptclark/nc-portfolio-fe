@@ -56,11 +56,8 @@ export default Upload = () => {
       const formData = new FormData();
       formData.append("file", newfile);
       formData.append("upload_preset", "jycjtlpe");
-      // //Send tags array to cloudinary in here?
-      // const formData = {};
-      formData.file = newfile;
-      formData.upload_preset = "jycjtlpe";
-      formData.tags = tags;
+      formData.append("tags", tags.join(","));
+
       return postCloudinary(url, formData)
         .then((data) => {
           const videoData = {
