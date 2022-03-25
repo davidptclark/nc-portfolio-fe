@@ -50,5 +50,15 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     paddingTop: 5,
   },
+  loginHeaderText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "black",
+    fontSize: 20,
+  },
+  loginLabel: {
+    color: "black",
+    padding: 5,
+  },
 });
 export default styles;

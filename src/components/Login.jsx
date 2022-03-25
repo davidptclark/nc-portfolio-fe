@@ -33,15 +33,20 @@ const Login = () => {
           alert("Error signing in");
         }
       });
+    setNewUser({
+      username: "",
+      password: "",
+    });
   };
+  console.log(newUser);
   return isLoading ? (
     <View style={styles.container}>
       <ActivityIndicator size="large" color="#0000ff" />
     </View>
   ) : (
     <View style={styles.loginContainer}>
-      <Text style={styles.text}>Log in</Text>
-      <Text style={styles.text}>Username</Text>
+      <Text style={styles.loginHeaderText}>Log in</Text>
+      <Text style={styles.loginLabel}>Username</Text>
       <TextInput
         style={styles.textInput}
         placeholder="Username"
@@ -53,7 +58,7 @@ const Login = () => {
           })
         }
       />
-      <Text style={styles.text}>Password</Text>
+      <Text style={styles.loginLabel}>Password</Text>
       <TextInput
         style={styles.textInput}
         placeholder="Password"
@@ -67,6 +72,7 @@ const Login = () => {
         secureTextEntry
       />
       <CustomButton
+        disabled={newUser.username === "" || newUser.password === ""}
         onPress={() => {
           loginUser();
         }}
