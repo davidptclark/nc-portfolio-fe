@@ -41,6 +41,17 @@ const styles = StyleSheet.create({
   userType: {
     fontWeight: "bold",
   },
+  videoContainer: {
+    borderWidth: 2,
+    padding: 20,
+    margin: 10,
+  },
+  videoOptionContainer: {
+    flex: 0,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
   loginContainer: {
     margin: 10,
   },

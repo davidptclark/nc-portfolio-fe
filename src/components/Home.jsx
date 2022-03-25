@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, Button } from "react-native";
-import { Video, AVPlaybackStatus } from "expo-av";
+import * as api from "../utils/api";
+import Likes from "./Likes";
+import { View } from "react-native";
+import { Video } from "expo-av";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useState, useRef } from "react";
 import { FlatList } from "react-native";
-import axios from "axios";
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
 
@@ -27,14 +28,9 @@ export default Home = () => {
       cloudName: "ncfiveguysuk",
     },
   });
+
   useEffect(() => {
-    axios
-      .get(
-        "http://394232959681238:rpEav_7-j09FtUQgWOVp69WmTW4@res.cloudinary.com/ncfiveguysuk/video/list/test.json"
-      )
-      .then((res) => {
-        setVideos(res.data.resources);
-      });
+    api.getVideos().then(({ videos }) => setVideos(videos));
   }, []);
 
   return (
@@ -53,12 +49,13 @@ export default Home = () => {
       <FlatList
         data={videos.map((video) => {
           return {
-            url: cld.video(video.public_id).toURL(),
-            id: video.public_id,
+            url: cld.video(video.cloudinary_id).toURL(),
+            id: video.cloudinary_id,
+            votes: video.votes,
           };
         })}
         renderItem={({ item }) => (
-          <View style={{ borderWidth: 2, padding: 20, margin: 10 }}>
+          <View style={styles.videoContainer}>
             <Video
               style={styles.video}
               source={{
@@ -68,6 +65,9 @@ export default Home = () => {
               resizeMode="contain"
               isLooping
             />
+            <View style={styles.videoOptionContainer}>
+              <Likes item={item} />
+            </View>
           </View>
         )}
         keyExtractor={(item) => item.id}
