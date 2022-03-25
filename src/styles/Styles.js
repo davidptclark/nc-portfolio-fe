@@ -60,5 +60,10 @@ const styles = StyleSheet.create({
     color: "black",
     padding: 5,
   },
+  header: {
+    margin: 0,
+    padding: 0,
+    height: 1,
+  },
 });
 export default styles;

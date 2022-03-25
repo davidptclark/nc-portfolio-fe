@@ -6,7 +6,7 @@ import { LoginContext } from "../contexts/LoginContext";
 import { signinUser } from "../../api";
 import CustomButton from "./CustomButton";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [newUser, setNewUser] = useState({
     username: "",
@@ -38,14 +38,12 @@ const Login = () => {
       password: "",
     });
   };
-  console.log(newUser);
   return isLoading ? (
     <View style={styles.container}>
       <ActivityIndicator size="large" color="#0000ff" />
     </View>
   ) : (
     <View style={styles.loginContainer}>
-      <Text style={styles.loginHeaderText}>Log in</Text>
       <Text style={styles.loginLabel}>Username</Text>
       <TextInput
         style={styles.textInput}
@@ -80,7 +78,9 @@ const Login = () => {
         accessibilityLabel="log in"
       />
       <CustomButton
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate("Sign Up");
+        }}
         title="Sign Up"
         accessibilityLabel="Sign up"
       />
