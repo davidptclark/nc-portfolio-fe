@@ -58,15 +58,17 @@ export default Home = () => {
           };
         })}
         renderItem={({ item }) => (
-          <Video
-            style={styles.video}
-            source={{
-              uri: item.url,
-            }}
-            useNativeControls
-            resizeMode="contain"
-            isLooping
-          />
+          <View style={{ borderWidth: 2, padding: 20, margin: 10 }}>
+            <Video
+              style={styles.video}
+              source={{
+                uri: item.url,
+              }}
+              useNativeControls
+              resizeMode="contain"
+              isLooping
+            />
+          </View>
         )}
         keyExtractor={(item) => item.id}
       />
