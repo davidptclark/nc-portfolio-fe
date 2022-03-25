@@ -1,31 +1,23 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import Tags from "react-native-tags";
-export default AddTags = ({ tags, setTags }) => {
+export default AddTags = ({ setTags }) => {
   return (
     <Tags
       initialText=""
       textInputProps={{
         placeholder: "Add your technology",
       }}
-      // initialTags={["JS"]}
-      // onChangeTags={(tags) => console.log(tags)}
-      // onTagPress={(index, tagLabel, event, deleted) =>
-      //   console.log(index, tagLabel, event, deleted ? "deleted" : "not deleted")
-      // }
+      onChangeTags={(tags) => {
+        setTags(tags);
+      }}
       containerStyle={styles.tagContainer}
       inputStyle={{ backgroundColor: "white", color: "black" }}
-      // onChangeTags={}
       renderTag={({ tag, index, onPress }) => (
         <TouchableOpacity
           style={styles.tag}
           key={`${tag}-${index}`}
           onPress={onPress}
         >
-          {setTags((currentTags) => {
-            const newTags = [tag, ...currentTags];
-            return newTags;
-          })}
-          {console.log(tags)}
           <Text style={styles.textTag}>{tag}</Text>
         </TouchableOpacity>
       )}

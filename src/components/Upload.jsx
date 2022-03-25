@@ -56,20 +56,23 @@ export default Upload = () => {
       const formData = new FormData();
       formData.append("file", newfile);
       formData.append("upload_preset", "jycjtlpe");
-      //Send tags array to cloudinary in here?
-      formData.append("tags", "test");
-
-      postCloudinary(url, formData).then((data) => {
-        const video_id = data.asset_id;
-        const videoData = {
-          title: titleText,
-          description: descriptionText,
-          cloudinary_id: video_id,
-          tags: tags,
-          username: user,
-        };
-
-        postVideoToDatabase(videoData).then(() => {
+      // //Send tags array to cloudinary in here?
+      // const formData = {};
+      formData.file = newfile;
+      formData.upload_preset = "jycjtlpe";
+      formData.tags = tags;
+      return postCloudinary(url, formData)
+        .then((data) => {
+          const videoData = {
+            title: titleText,
+            description: descriptionText,
+            cloudinary_id: data.asset_id,
+            tags: tags,
+            username: user,
+          };
+          return postVideoToDatabase(videoData);
+        })
+        .then(() => {
           setIsLoading(false);
           setImage(null);
           setDescriptionText("");
@@ -80,8 +83,7 @@ export default Upload = () => {
           console.log(data);
           console.log(data.asset_id);
         });
-        //Post video request.then()
-      });
+      //Post video request.then()
     }
   }
 
@@ -138,7 +140,7 @@ export default Upload = () => {
                   <Text style={{ color: "#888", fontSize: 16 }}>
                     Tags (Add your tag and then press space)
                   </Text>
-                  <AddTags tags={tags} setTags={setTags} />
+                  <AddTags setTags={setTags} />
                 </View>
 
                 <Button title="Upload" onPress={() => handleUpload(image)} />
