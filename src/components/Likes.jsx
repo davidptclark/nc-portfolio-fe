@@ -11,24 +11,18 @@ export default Likes = ({ item }) => {
     if (!hasVoted) {
       setHasVoted(true);
       setSentVotes(1); //optimistically renders votes to screen
-      api
-        .patchVotesByVideoId(1, id)
-        .then((rows) => console.log(rows))
-        .catch(() => {
-          setHasVoted(false);
-          setSentVotes(0); //removes optimistically renders vote if error
-        });
+      api.patchVotesByVideoId(1, id).catch(() => {
+        setHasVoted(false);
+        setSentVotes(0); //removes optimistically renders vote if error
+      });
     } else {
       //block allows for removal of previously added vote by pressing icon
       setHasVoted(false);
       setSentVotes(0);
-      api
-        .patchVotesByVideoId(-1, id)
-        .then((rows) => console.log(rows))
-        .catch(() => {
-          setHasVoted(true);
-          setSentVotes(1);
-        });
+      api.patchVotesByVideoId(-1, id).catch(() => {
+        setHasVoted(true);
+        setSentVotes(1);
+      });
     }
   };
   return (
