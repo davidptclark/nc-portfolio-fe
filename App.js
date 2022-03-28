@@ -10,6 +10,7 @@ import BottomTabNavigator from "./src/navigation/TabNavigation";
 //Context
 import { UserContext } from "./src/contexts/UserContext";
 import { LoginContext } from "./src/contexts/LoginContext";
+import User from "./src/components/User";
 import SignInAndUp from "./src/components/SignInAndUp";
 
 const Tab = createBottomTabNavigator();

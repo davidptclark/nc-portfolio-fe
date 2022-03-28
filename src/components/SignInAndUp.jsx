@@ -12,7 +12,7 @@ function SignInAndUp() {
         name="Sign In"
         component={Login}
         options={{
-          headerTitleStyle: { fontSize: 20 },
+          headerShown: false,
         }}
       />
       <Stack.Screen

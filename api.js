@@ -32,3 +32,7 @@ export const postUser = (username, password, type) => {
       return user;
     });
 };
+
+export const patchUser = ({ username, bio, avatar_url, social_url }) => {
+  return videoApi.patch(`/users/${username}`, { bio, avatar_url, social_url });
+};
