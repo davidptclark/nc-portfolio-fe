@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 320,
     height: 200,
+    margin: 40,
   },
   avatarUrl: {
     width: 100,
