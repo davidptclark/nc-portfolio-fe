@@ -6,8 +6,8 @@ import styles from "../styles/Styles";
 import CustomButton from "./CustomButton";
 
 function EditProfile({ navigation }) {
-  const [newUrl, setNewUrl] = useState("");
   const { user, setUser } = useContext(UserContext);
+  const [newUrl, setNewUrl] = useState(user.avatar_url);
   return (
     <View>
       <Text>Avatar Url</Text>
@@ -21,6 +21,11 @@ function EditProfile({ navigation }) {
       <CustomButton
         title="Save"
         accessibilityLabel="Save"
+        disabled={
+          !/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
+            newUrl
+          )
+        }
         onPress={() => {
           setUser((currentUser) => {
             const newUser = { ...currentUser };
