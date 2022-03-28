@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 import { LoginContext } from "../contexts/LoginContext";
 import styles from "../styles/Styles";
 import avatar from "../../avatar.jpg";
-import CustomButton from "./CustomButton";
+
 export default UserPage = ({ navigation }) => {
   const { user } = useContext(UserContext);
   const { setLoggedIn } = useContext(LoginContext);
@@ -13,6 +13,7 @@ export default UserPage = ({ navigation }) => {
       <Image
         style={styles.avatarUrl}
         source={user.avatar_url ? { uri: user.avatarUrl } : avatar}
+        defaultSource={avatar}
       />
       <Text style={styles.username}>{user.username}</Text>
       <Text style={styles.userType}>{user.type}</Text>

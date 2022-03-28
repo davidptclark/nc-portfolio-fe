@@ -14,11 +14,8 @@ import Login from "./src/components/Login";
 //Context
 import { UserContext } from "./src/contexts/UserContext";
 import { LoginContext } from "./src/contexts/LoginContext";
-<<<<<<< HEAD
 import User from "./src/components/User";
-=======
 import SignInAndUp from "./src/components/SignInAndUp";
->>>>>>> 9536ecc3bf817a8858efd78843b0ed7825fcdbc2
 
 const Tab = createBottomTabNavigator();
 
