@@ -30,7 +30,6 @@ function Signup() {
 
   const addUser = () => {
     setIsloading(true);
-    console.log("running");
     new Promise((resolve, reject) => {
       bcrypt.hash(newUser.password, 5, (err, hash) => {
         if (err) reject(err);
@@ -42,7 +41,6 @@ function Signup() {
       })
       .then((user) => {
         setIsloading(false);
-        console.log(user);
         setUser(user);
         setLoggedIn(true);
       });

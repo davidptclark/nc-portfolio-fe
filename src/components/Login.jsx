@@ -1,4 +1,10 @@
-import { Button, Text, TextInput, View, ActivityIndicator } from "react-native";
+import {
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
@@ -43,7 +49,7 @@ const Login = ({ navigation }) => {
       <ActivityIndicator size="large" color="#0000ff" />
     </View>
   ) : (
-    <View style={styles.loginContainer}>
+    <ScrollView style={styles.loginContainer}>
       <Text style={styles.loginLabel}>Username</Text>
       <TextInput
         style={styles.textInput}
@@ -84,7 +90,7 @@ const Login = ({ navigation }) => {
         title="Sign Up"
         accessibilityLabel="Sign up"
       />
-    </View>
+    </ScrollView>
   );
 };
 
