@@ -11,3 +11,7 @@ export const getVideos = (topic, sortBy, orderBy) => {
 export const patchVotesByVideoId = (vote, video_id) => {
   return api.patch(`/videos/${video_id}`, { vote: vote });
 };
+
+export const GetCommentsByVideoId = (video_id) => {
+  return api.get(`/comments/${video_id}`);
+};

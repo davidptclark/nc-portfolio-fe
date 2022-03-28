@@ -72,6 +72,20 @@ const styles = StyleSheet.create({
     color: "black",
     padding: 5,
   },
+  commentContainer: {
+    borderWidth: 2,
+    borderRadius: 10,
+    backgroundColor: "#d6dcf0",
+    padding: 15,
+    margin: 10,
+  },
+  commentBody: {
+    padding: 10,
+    fontStyle: "italic",
+  },
+  commentDetails: {
+    padding: 10,
+  },
   header: {
     margin: 0,
     padding: 0,
