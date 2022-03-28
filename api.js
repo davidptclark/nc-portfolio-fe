@@ -1,16 +1,8 @@
 import axios from "axios";
 
-const api = axios.create({
+const videoApi = axios.create({
   baseURL: "https://nc-portfolio-app.herokuapp.com/api",
 });
-
-export const getVideos = (topic, sortBy, orderBy) => {
-  return api.get(`/videos`).then(({ data: videos }) => videos);
-};
-
-export const patchVotesByVideoId = (vote, video_id) => {
-  return api.patch(`/videos/${video_id}`, { vote: vote });
-};
 
 export const postCloudinary = (url, formData, tags) => {
   return fetch(url, {
@@ -22,7 +14,7 @@ export const postCloudinary = (url, formData, tags) => {
 export const postVideoToDatabase = (returnData) => {
   const videoData = {};
   console.log(returnData);
-  return videoApi.post("/videos", returnData).then(() => {});
+  // return videoApi.post("/videos").then(() => {});
 };
 
 export const signinUser = (username, password) => {
@@ -33,6 +25,10 @@ export const signinUser = (username, password) => {
     });
 };
 
-export const GetCommentsByVideoId = (video_id) => {
-  return api.get(`/comments/${video_id}`);
+export const postUser = (username, password, type) => {
+  return videoApi
+    .post("/users", { username, password, type })
+    .then(({ data: { user } }) => {
+      return user;
+    });
 };

@@ -1,12 +1,13 @@
 import { Text, View, StyleSheet, Pressable } from "react-native";
 
 export default function CustomButton(props) {
-  const { disabled, onPress, title } = props;
+  const { accessibilityLabel, disabled, onPress, title } = props;
   return (
     <Pressable
       disabled={disabled}
       style={disabled ? styles.disabledButton : styles.button}
       onPress={onPress}
+      accessibilityLabel={accessibilityLabel}
     >
       <Text style={styles.text}>{title}</Text>
     </Pressable>
