@@ -13,5 +13,5 @@ export const patchVotesByVideoId = (vote, video_id) => {
 };
 
 export const GetCommentsByVideoId = (video_id) => {
-  return api.get(`/comments/${video_id}`).catch((err) => console.log(err));
+  return api.get(`/comments/${video_id}`);
 };
