@@ -22,11 +22,11 @@ export const postCloudinary = (url, formData, tags) => {
 export const postVideoToDatabase = (returnData) => {
   const videoData = {};
   console.log(returnData);
-  return videoApi.post("/videos", returnData).then(() => {});
+  return api.post("/videos", returnData).then(() => {});
 };
 
 export const signinUser = (username, password) => {
-  return videoApi
+  return api
     .post("/signin", { username, password })
     .then(({ data: { user } }) => {
       return user;
