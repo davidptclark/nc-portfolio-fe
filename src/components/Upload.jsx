@@ -14,7 +14,7 @@ import {
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 
-import { postCloudinary, postVideoToDatabase } from "../../api";
+import { postCloudinary, postVideoToDatabase } from "../utils/api";
 
 import AddTags from "./AddTags";
 
@@ -65,8 +65,9 @@ export default Upload = () => {
             description: descriptionText,
             cloudinary_id: data.asset_id,
             tags: tags,
-            // username: user,
+            username: "butter_bridge",
           };
+
           return postVideoToDatabase(videoData);
         })
         .then(() => {
@@ -77,11 +78,8 @@ export default Upload = () => {
           setTags([]);
 
           alert("Your video has been uploaded sucessfully!");
-          console.log(data);
-          console.log(data.asset_id);
         })
         .catch(console.log);
-      //Post video request.then()
     }
   }
 
@@ -100,7 +98,7 @@ export default Upload = () => {
                 <Button
                   title={
                     image === null
-                      ? "Pick an image from camera roll"
+                      ? "Pick an video from gallery"
                       : "Press to change selection"
                   }
                   onPress={pickImage}
