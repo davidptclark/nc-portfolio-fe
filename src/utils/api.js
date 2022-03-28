@@ -20,8 +20,6 @@ export const postCloudinary = (url, formData, tags) => {
 };
 
 export const postVideoToDatabase = (returnData) => {
-  const videoData = {};
-  console.log(returnData);
   return api.post("/videos", returnData).then(() => {});
 };
 

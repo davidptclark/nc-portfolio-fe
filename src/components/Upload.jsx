@@ -18,8 +18,6 @@ import { postCloudinary, postVideoToDatabase } from "../utils/api";
 
 import AddTags from "./AddTags";
 
-//Add user context
-
 export default Upload = () => {
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
