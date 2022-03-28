@@ -11,10 +11,10 @@ export default UserPage = () => {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Image
         style={styles.avatarUrl}
-        source={user.avatarUrl ? { uri: user.avatarUrl } : avatar}
+        source={user.avatar_url ? { uri: user.avatarUrl } : avatar}
       />
       <Text style={styles.username}>{user.username}</Text>
-      <Text style={styles.userType}>{user.user_type}</Text>
+      <Text style={styles.userType}>{user.type}</Text>
       <Text style={styles.bio}>{user.bio}</Text>
       <Button
         onPress={() => {

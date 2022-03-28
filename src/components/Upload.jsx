@@ -45,7 +45,7 @@ export default Upload = () => {
     if (file !== null) {
       setIsLoading(true);
 
-      const url = `https://api.cloudinary.com/v1_1/ncfiveguysuk/auto/upload`;
+      const url = `https://api.cloudinary.com/v1_1/ncapp/auto/upload`;
 
       let newfile = {
         uri: file,
@@ -55,7 +55,7 @@ export default Upload = () => {
 
       const formData = new FormData();
       formData.append("file", newfile);
-      formData.append("upload_preset", "jycjtlpe");
+      formData.append("upload_preset", "votugmno");
       formData.append("tags", tags.join(","));
 
       return postCloudinary(url, formData)
@@ -65,7 +65,7 @@ export default Upload = () => {
             description: descriptionText,
             cloudinary_id: data.asset_id,
             tags: tags,
-            username: user,
+            // username: user,
           };
           return postVideoToDatabase(videoData);
         })

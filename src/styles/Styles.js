@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderColor: "black",
     borderWidth: 2,
+    padding: 5,
+    paddingLeft: 10,
+    borderRadius: 50,
   },
   video: {
     alignSelf: "center",
@@ -26,6 +29,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
+    resizeMode: "contain",
   },
   username: {
     fontWeight: "bold",
@@ -37,6 +41,36 @@ const styles = StyleSheet.create({
   },
   userType: {
     fontWeight: "bold",
+  },
+  videoContainer: {
+    borderWidth: 2,
+    padding: 20,
+    margin: 10,
+  },
+  videoOptionContainer: {
+    flex: 0,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  loginContainer: {
+    margin: 10,
+  },
+  loginButton: {
+    borderRadius: 50,
+    borderColor: "black",
+    paddingBottom: 5,
+    paddingTop: 5,
+  },
+  loginHeaderText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "black",
+    fontSize: 20,
+  },
+  loginLabel: {
+    color: "black",
+    padding: 5,
   },
 });
 export default styles;

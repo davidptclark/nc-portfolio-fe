@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ncApi = axios.create({
+const videoApi = axios.create({
   baseURL: "https://nc-portfolio-app.herokuapp.com/api",
 });
 
@@ -14,5 +14,13 @@ export const postCloudinary = (url, formData, tags) => {
 export const postVideoToDatabase = (returnData) => {
   const videoData = {};
   console.log(returnData);
-  // return ncApi.post("/videos").then(() => {});
+  // return videoApi.post("/videos").then(() => {});
+};
+
+export const signinUser = (username, password) => {
+  return videoApi
+    .post("/signin", { username, password })
+    .then(({ data: { user } }) => {
+      return user;
+    });
 };
