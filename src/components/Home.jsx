@@ -1,10 +1,11 @@
 import * as api from "../utils/api";
 import Likes from "./Likes";
-import { View, Button } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { Video } from "expo-av";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useState, useRef } from "react";
 import { FlatList } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
 
@@ -67,10 +68,12 @@ export default Home = ({ navigation }) => {
             />
             <View style={styles.videoOptionContainer}>
               <Likes item={item} />
-              <Button
-                title="Comments"
+              <TouchableOpacity
                 onPress={() => navigation.navigate("Comments", item.id)}
-              />
+                style={{ width: "30%" }}
+              >
+                <Ionicons name={"chatbubbles-outline"} size={32} />
+              </TouchableOpacity>
             </View>
           </View>
         )}
