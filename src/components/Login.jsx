@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
 import { LoginContext } from "../contexts/LoginContext";
-import { signinUser } from "../../api";
+import { signinUser } from "../utils/api";
 import CustomButton from "./CustomButton";
 
 const Login = ({ navigation }) => {

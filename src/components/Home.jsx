@@ -1,6 +1,6 @@
 import * as api from "../utils/api";
 import Likes from "./Likes";
-import { View } from "react-native";
+import { View, Button } from "react-native";
 import { Video } from "expo-av";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useState, useRef } from "react";
@@ -8,7 +8,7 @@ import { FlatList } from "react-native";
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
 
-export default Home = () => {
+export default Home = ({ navigation }) => {
   const [videos, setVideos] = useState([]);
   const [open, setOpen] = useState(false);
   const [tags, setTags] = useState([]);
@@ -30,7 +30,10 @@ export default Home = () => {
   });
 
   useEffect(() => {
-    api.getVideos().then(({ videos }) => setVideos(videos));
+    api.getVideos().then(({ videos }) => {
+      console.log(videos);
+      setVideos(videos);
+    });
   }, []);
 
   return (
@@ -67,6 +70,10 @@ export default Home = () => {
             />
             <View style={styles.videoOptionContainer}>
               <Likes item={item} />
+              <Button
+                title="Comments"
+                onPress={() => navigation.navigate("Comments", item.id)}
+              />
             </View>
           </View>
         )}
