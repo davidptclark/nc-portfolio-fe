@@ -3,17 +3,17 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeStackNavigator } from "../navigation/StackNavigation";
-
+import { useContext } from "react";
+import { LoginContext } from "../contexts/LoginContext";
 import UserPage from "../components/UserPage";
 import Upload from "../components/Upload";
 import Login from "../components/Login";
-import Comments from "../components/Comments";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const Tab = createBottomTabNavigator();
-
-const BottomTabNavigator = (loggedIn) => {
+const BottomTabNavigator = () => {
+  const Tab = createBottomTabNavigator();
+  const { loggedIn } = useContext(LoginContext);
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

@@ -1,7 +1,8 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import * as api from "../utils/api";
 import { useEffect, useState } from "react";
 import { FlatList } from "react-native";
+import styles from "../styles/Styles";
 
 export default Comments = ({ route }) => {
   const item_id = route.params;
@@ -20,7 +21,16 @@ export default Comments = ({ route }) => {
           id: comment.comment_id,
         };
       })}
-      renderItem={({ item }) => <Text>{item.comment_body}</Text>}
+      renderItem={({ item }) => (
+        <View style={styles.commentContainer}>
+          <Text style={styles.commentBody}>{item.comment_body}</Text>
+          <Text style={styles.commentDetails}>
+            {item.username}
+            {"\n"}
+            {item.date}
+          </Text>
+        </View>
+      )}
       keyExtractor={(item) => item.id}
     />
   );
