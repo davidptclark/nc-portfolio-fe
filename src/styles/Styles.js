@@ -65,5 +65,15 @@ const styles = StyleSheet.create({
     padding: 0,
     height: 1,
   },
+  signupCheckGood: {
+    margin: 5,
+    fontSize: 16,
+    color: "green",
+  },
+  signupCheckBad: {
+    margin: 5,
+    fontSize: 16,
+    color: "red",
+  },
 });
 export default styles;

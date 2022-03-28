@@ -10,3 +10,11 @@ export const signinUser = (username, password) => {
       return user;
     });
 };
+
+export const postUser = (username, password, type) => {
+  return videoApi
+    .post("/users", { username, password, type })
+    .then(({ data: { user } }) => {
+      return user;
+    });
+};
