@@ -14,16 +14,12 @@ import Login from "./src/components/Login";
 //Context
 import { UserContext } from "./src/contexts/UserContext";
 import { LoginContext } from "./src/contexts/LoginContext";
+import SignInAndUp from "./src/components/SignInAndUp";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [user, setUser] = useState({
-    username: "",
-    password: "",
-    bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?",
-    user_type: "Graduate",
-  });
+  const [user, setUser] = useState({});
   //State used to toggle view of UserProfile nav button
   const [loggedIn, setLoggedIn] = useState(false);
   return (
@@ -54,7 +50,7 @@ export default function App() {
             <Tab.Screen name="Upload" component={Upload} />
             <Tab.Screen
               name="Profile"
-              component={loggedIn ? UserPage : Login} //As above, state will determine what page is rendered
+              component={loggedIn ? UserPage : SignInAndUp} //As above, state will determine what page is rendered
               options={{ tabBarBadge: 3 }} //Option to show notifications further into the project
             />
           </Tab.Navigator>
