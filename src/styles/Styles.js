@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 320,
     height: 200,
+    margin: 40,
   },
   avatarUrl: {
     width: 100,
@@ -84,6 +85,21 @@ const styles = StyleSheet.create({
   },
   commentDetails: {
     padding: 10,
+  },
+  header: {
+    margin: 0,
+    padding: 0,
+    height: 1,
+  },
+  signupCheckGood: {
+    margin: 5,
+    fontSize: 16,
+    color: "green",
+  },
+  signupCheckBad: {
+    margin: 5,
+    fontSize: 16,
+    color: "red",
   },
 });
 export default styles;

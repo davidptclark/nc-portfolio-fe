@@ -25,7 +25,7 @@ export default Home = ({ navigation }) => {
   ]);
   const cld = new Cloudinary({
     cloud: {
-      cloudName: "ncfiveguysuk",
+      cloudName: "ncapp",
     },
   });
 
