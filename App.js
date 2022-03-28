@@ -14,6 +14,7 @@ import Login from "./src/components/Login";
 //Context
 import { UserContext } from "./src/contexts/UserContext";
 import { LoginContext } from "./src/contexts/LoginContext";
+import User from "./src/components/User";
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +55,7 @@ export default function App() {
             <Tab.Screen name="Upload" component={Upload} />
             <Tab.Screen
               name="Profile"
-              component={loggedIn ? UserPage : Login} //As above, state will determine what page is rendered
+              component={loggedIn ? User : Login} //As above, state will determine what page is rendered
               options={{ tabBarBadge: 3 }} //Option to show notifications further into the project
             />
           </Tab.Navigator>

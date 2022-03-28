@@ -38,7 +38,6 @@ const Login = () => {
       password: "",
     });
   };
-  console.log(newUser);
   return isLoading ? (
     <View style={styles.container}>
       <ActivityIndicator size="large" color="#0000ff" />
