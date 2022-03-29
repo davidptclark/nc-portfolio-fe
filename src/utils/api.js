@@ -34,3 +34,15 @@ export const signinUser = (username, password) => {
 export const GetCommentsByVideoId = (video_id) => {
   return api.get(`/comments/${video_id}`);
 };
+
+export const postUser = (username, password, type) => {
+  return api
+    .post("/users", { username, password, type })
+    .then(({ data: { user } }) => {
+      return user;
+    });
+};
+
+export const patchUser = ({ username, bio, avatar_url, social_url }) => {
+  return api.patch(`/users/${username}`, { bio, avatar_url, social_url });
+};
