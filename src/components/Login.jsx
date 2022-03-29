@@ -50,6 +50,7 @@ const Login = ({ navigation }) => {
     </View>
   ) : (
     <ScrollView style={styles.loginContainer}>
+      <Text style={styles.loginHeaderText}>Log In</Text>
       <Text style={styles.loginLabel}>Username</Text>
       <TextInput
         style={styles.textInput}

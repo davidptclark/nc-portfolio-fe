@@ -14,7 +14,6 @@ import bcrypt from "react-native-bcrypt";
 import { postUser } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import { LoginContext } from "../contexts/LoginContext";
-
 function Signup() {
   const symbolRegex = /[~`!@#$%^&*()_\-+={[}\]|\\:;"'<,>.?/]/;
   const numberRegex = /[0-9]/;
