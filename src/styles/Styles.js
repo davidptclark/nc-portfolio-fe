@@ -114,5 +114,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "red",
   },
+  CommentInputBox: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+  CommentButton: {
+    flex: 0,
+    flexDirection: "row",
+
+    justifyContent: "center",
+  },
 });
 export default styles;

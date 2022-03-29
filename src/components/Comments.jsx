@@ -1,15 +1,19 @@
 import { Text, View } from "react-native";
+import React from "react";
 import * as api from "../utils/api";
 import { useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import styles from "../styles/Styles";
 
-export default Comments = ({ route }) => {
-  const item_id = route.params;
-  const [comments, SetComments] = useState([]);
+export default Comments = ({
+  item_id,
+  setComments,
+  comments,
+  noOfComments,
+}) => {
   useEffect(() => {
-    api.GetCommentsByVideoId(item_id).then(({ data }) => SetComments(data));
-  }, []);
+    api.GetCommentsByVideoId(item_id).then(({ data }) => setComments(data));
+  }, [noOfComments]);
 
   return (
     <FlatList

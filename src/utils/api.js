@@ -39,6 +39,12 @@ export const GetCommentsByVideoId = (video_id) => {
 };
 
 
+export const postCommentByVideoId = (video_id, newComment, username) => {
+  return api.post(`/comments/${video_id}`, {
+    body: newComment,
+    username: username,
+  });
+
 export const getTags = () => {
   return api.get("/tags").then(({ data: { tags } }) => {
     return tags;
@@ -54,5 +60,4 @@ export const postUser = (username, password, type) => {
 
 export const patchUser = ({ username, bio, avatar_url, social_url }) => {
   return api.patch(`/users/${username}`, { bio, avatar_url, social_url });
-
 };
