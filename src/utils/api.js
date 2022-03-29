@@ -36,18 +36,6 @@ export const signinUser = (username, password) => {
     });
 };
 
-export const postUser = (username, password, type) => {
-  return api
-    .post("/users", { username, password, type })
-    .then(({ data: { user } }) => {
-      return user;
-    });
-};
-
-export const patchUser = ({ username, bio, avatar_url, social_url }) => {
-  return api.patch(`/users/${username}`, { bio, avatar_url, social_url });
-};
-
 export const postCommentByVideoId = (video_id, newComment, username) => {
   return api.post(`/comments/${video_id}`, {
     body: newComment,
@@ -64,3 +52,4 @@ export const getTags = () => {
 export const deleteCommentById = (commentId) => {
   return api.delete(`/comments/${commentId}`);
 };
+
