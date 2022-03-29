@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     elevation: 3,
-    backgroundColor: "white",},
+    backgroundColor: "white",
+  },
 
   commentContainer: {
     borderWidth: 2,
@@ -97,7 +98,6 @@ const styles = StyleSheet.create({
   },
   commentDetails: {
     padding: 10,
-
   },
   header: {
     margin: 0,
