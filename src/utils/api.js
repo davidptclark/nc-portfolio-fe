@@ -61,3 +61,6 @@ export const getTags = () => {
   });
 };
 
+export const deleteCommentById = (commentId) => {
+  return api.delete(`/comments/${commentId}`);
+};

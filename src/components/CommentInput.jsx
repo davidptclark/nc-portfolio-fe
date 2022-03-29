@@ -8,7 +8,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import styles from "../styles/Styles";
 import { UserContext } from "../contexts/UserContext";
 
-export default CommentInput = ({ item_id, setComments, setNoOfComments }) => {
+export default CommentInput = ({ item_id, setNoOfComments }) => {
   const [newComment, setNewComment] = useState("");
   const { user } = useContext(UserContext);
   function handlePress(newComment) {
@@ -25,7 +25,6 @@ export default CommentInput = ({ item_id, setComments, setNoOfComments }) => {
         });
     }
   }
-  //TODO: update list of comments with useEffect
 
   return (
     <View>
