@@ -48,3 +48,8 @@ export const getTags = () => {
     return tags;
   });
 };
+
+export const deleteCommentById = (commentId) => {
+  return api.delete(`/comments/${commentId}`);
+};
+

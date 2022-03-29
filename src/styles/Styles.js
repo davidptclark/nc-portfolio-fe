@@ -126,5 +126,11 @@ const styles = StyleSheet.create({
 
     justifyContent: "center",
   },
+  DeleteButton: {
+    flex: 0,
+    flexDirection: "row",
+
+    justifyContent: "center",
+  },
 });
 export default styles;

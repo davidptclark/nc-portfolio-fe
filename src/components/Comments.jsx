@@ -4,6 +4,7 @@ import * as api from "../utils/api";
 import { useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import styles from "../styles/Styles";
+import DeleteComment from "./DeleteComment";
 
 export default Comments = ({
   item_id,
@@ -11,9 +12,10 @@ export default Comments = ({
   comments,
   noOfComments,
 }) => {
+  const [deletedCommentId, setDeletedCommentId] = useState("");
   useEffect(() => {
     api.GetCommentsByVideoId(item_id).then(({ data }) => setComments(data));
-  }, [noOfComments]);
+  }, [noOfComments, deletedCommentId]);
 
   return (
     <FlatList
@@ -33,6 +35,11 @@ export default Comments = ({
             {"\n"}
             {item.date}
           </Text>
+          <DeleteComment
+            setDeletedCommentId={setDeletedCommentId}
+            commentPostedBy={item.username}
+            commentId={item.id}
+          />
         </View>
       )}
       keyExtractor={(item) => item.id}
