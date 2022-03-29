@@ -18,30 +18,9 @@ export const postCloudinary = (url, formData) => {
     body: formData,
   }).then((res) => res.json());
 };
-export const deleteCloudinary = (url, formData) => {
-  return fetch(url + `/delete_by_token`, {
-    method: "post",
-    body: { token: delete_token },
-  })
-    .then((res) => {
-      console.log(res);
-      console.log("video deleted");
-    })
-    .catch(console.log);
-};
 
-export const postVideoToDatabase = (returnData, url, formData) => {
-  console.log(returnData);
-  // return api
-  //   .post("/videos", returnData)
-  //   .then(() => {
-  //     console.log("posted");
-  //   })
-
-  return Promise.reject({ msg: "post failed" }).catch((err) => {
-    console.log(err);
-    return deleteCloudinary(url, formData);
-  });
+export const postVideoToDatabase = (returnData) => {
+  return api.post("/videos", returnData);
 };
 
 export const GetCommentsByVideoId = (video_id) => {
