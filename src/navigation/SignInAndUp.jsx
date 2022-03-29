@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import styles from "../styles/Styles";
-import Login from "./Login";
-import Signup from "./Signup";
+import Login from "../components/Login";
+import Signup from "../components/Signup";
 
 const Stack = createNativeStackNavigator();
 function SignInAndUp() {
@@ -12,7 +12,7 @@ function SignInAndUp() {
         name="Sign In"
         component={Login}
         options={{
-          headerTitleStyle: { fontSize: 20 },
+          headerShown: false,
         }}
       />
       <Stack.Screen

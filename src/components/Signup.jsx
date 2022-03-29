@@ -11,10 +11,9 @@ import CustomButton from "./CustomButton";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useState } from "react";
 import bcrypt from "react-native-bcrypt";
-import { postUser } from "../../api";
+import { postUser } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import { LoginContext } from "../contexts/LoginContext";
-
 function Signup() {
   const symbolRegex = /[~`!@#$%^&*()_\-+={[}\]|\\:;"'<,>.?/]/;
   const numberRegex = /[0-9]/;

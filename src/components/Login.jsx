@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
 import { LoginContext } from "../contexts/LoginContext";
-import { signinUser } from "../../api";
+import { signinUser } from "../utils/api";
 import CustomButton from "./CustomButton";
 
 const Login = ({ navigation }) => {
@@ -50,6 +50,7 @@ const Login = ({ navigation }) => {
     </View>
   ) : (
     <ScrollView style={styles.loginContainer}>
+      <Text style={styles.loginHeaderText}>Log In</Text>
       <Text style={styles.loginLabel}>Username</Text>
       <TextInput
         style={styles.textInput}

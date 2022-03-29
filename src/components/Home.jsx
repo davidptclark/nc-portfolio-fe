@@ -31,9 +31,19 @@ export default Home = ({ navigation }) => {
   });
 
   useEffect(() => {
-    api.getVideos().then(({ videos }) => setVideos(videos));
+    api.getTags().then((apiTags) => {
+      setItems(
+        apiTags.map(({ tag }) => {
+          return { label: tag, value: tag };
+        })
+      );
+    });
   }, []);
-
+  useEffect(() => {
+    api.getVideos(tags.join(",")).then((videos) => {
+      setVideos(videos);
+    });
+  }, [tags]);
   return (
     <View style={styles.container}>
       <DropDownPicker

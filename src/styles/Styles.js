@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     borderRadius: 50,
+    elevation: 3,
   },
   video: {
     alignSelf: "center",
@@ -72,6 +73,17 @@ const styles = StyleSheet.create({
     color: "black",
     padding: 5,
   },
+
+  editInput: {
+    borderColor: "black",
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderRadius: 25,
+    padding: 5,
+    paddingLeft: 10,
+    elevation: 3,
+    backgroundColor: "white",},
+
   commentContainer: {
     borderWidth: 2,
     borderRadius: 10,
@@ -85,6 +97,7 @@ const styles = StyleSheet.create({
   },
   commentDetails: {
     padding: 10,
+
   },
   header: {
     margin: 0,

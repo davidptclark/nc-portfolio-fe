@@ -4,21 +4,19 @@ import {
   StyleSheet,
   Button,
   ActivityIndicator,
-  TouchableOpacity,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import * as ImagePicker from "expo-image-picker";
 
-import { postCloudinary, postVideoToDatabase } from "../../api";
+import { postCloudinary, postVideoToDatabase } from "../utils/api";
 
 import AddTags from "./AddTags";
-
-//Add user context
 
 export default Upload = () => {
   const [image, setImage] = useState(null);
@@ -26,6 +24,7 @@ export default Upload = () => {
   const [titleText, setTitleText] = useState("");
   const [descriptionText, setDescriptionText] = useState("");
   const [tags, setTags] = useState([]);
+  const { user } = useContext(UserContext);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -65,8 +64,9 @@ export default Upload = () => {
             description: descriptionText,
             cloudinary_id: data.asset_id,
             tags: tags,
-            // username: user,
+            username: user.username,
           };
+
           return postVideoToDatabase(videoData);
         })
         .then(() => {
@@ -77,11 +77,8 @@ export default Upload = () => {
           setTags([]);
 
           alert("Your video has been uploaded sucessfully!");
-          console.log(data);
-          console.log(data.asset_id);
         })
         .catch(console.log);
-      //Post video request.then()
     }
   }
 
@@ -100,7 +97,7 @@ export default Upload = () => {
                 <Button
                   title={
                     image === null
-                      ? "Pick an image from camera roll"
+                      ? "Pick an video from gallery"
                       : "Press to change selection"
                   }
                   onPress={pickImage}
