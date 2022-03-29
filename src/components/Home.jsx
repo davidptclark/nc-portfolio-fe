@@ -43,8 +43,6 @@ export default Home = ({ navigation }) => {
       setVideos(videos);
     });
   }, [tags]);
-  console.log(tags);
-  console.log(videos);
   return (
     <View style={styles.container}>
       <DropDownPicker
