@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { LoginContext } from "../contexts/LoginContext";
 import * as ImagePicker from "expo-image-picker";
 
 import { postCloudinary, postVideoToDatabase } from "../utils/api";
@@ -25,6 +26,7 @@ export default Upload = ({ navigation }) => {
   const [descriptionText, setDescriptionText] = useState("");
   const [tags, setTags] = useState([]);
   const { user } = useContext(UserContext);
+  const { loggedIn } = useContext(LoginContext);
 
   const pickVideo = async () => {
     // No permissions request is necessary for launching the image library
@@ -67,7 +69,7 @@ export default Upload = ({ navigation }) => {
             username: user.username,
           };
 
-          return postVideoToDatabase(videoData, url, formData);
+          return postVideoToDatabase(videoData);
         })
         .then(() => {
           setIsLoading(false);
@@ -84,7 +86,7 @@ export default Upload = ({ navigation }) => {
     }
   }
 
-  if (!user.username) {
+  if (!loggedIn) {
     return (
       <View style={styles.notLoggedInContainer}>
         <Text
