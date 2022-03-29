@@ -30,7 +30,7 @@ export default Home = ({ navigation }) => {
   });
 
   useEffect(() => {
-    api.getVideos().then(({ videos }) => {
+    api.getVideos().then((videos) => {
       setVideos(videos);
     });
   }, []);
