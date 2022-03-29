@@ -18,7 +18,7 @@ import { postCloudinary, postVideoToDatabase } from "../utils/api";
 
 import AddTags from "./AddTags";
 
-export default Upload = () => {
+export default Upload = ({ navigation }) => {
   const [video, setVideo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [titleText, setTitleText] = useState("");
@@ -84,6 +84,20 @@ export default Upload = () => {
     }
   }
 
+  if (!user.username) {
+    return (
+      <View style={styles.notLoggedInContainer}>
+        <Text
+          style={styles.notLoggedInText}
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+        >
+          Log in before uploading a video.
+        </Text>
+      </View>
+    );
+  }
   if (isLoading) {
     return (
       <View style={styles.containerLoading}>
@@ -192,5 +206,21 @@ const styles = StyleSheet.create({
 
   descriptionContainer: {
     margin: 25,
+  },
+  notLoggedInContainer: {
+    height: "100%",
+
+    margin: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  notLoggedInText: {
+    backgroundColor: "blue",
+    color: "white",
+    paddingHorizontal: "15%",
+    padding: 10,
+    borderRadius: 30,
+    textAlign: "center",
+    fontWeight: "bold",
   },
 });
