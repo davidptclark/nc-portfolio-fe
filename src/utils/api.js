@@ -4,8 +4,10 @@ const api = axios.create({
   baseURL: "https://nc-portfolio-app.herokuapp.com/api",
 });
 
-export const getVideos = (topic, sortBy, orderBy) => {
-  return api.get(`/videos`).then(({ data: videos }) => videos);
+export const getVideos = (tag, sortBy, orderBy) => {
+  return api
+    .get(`/videos`, { params: { tag, sortBy, orderBy } })
+    .then(({ data: { videos } }) => videos);
 };
 
 export const patchVotesByVideoId = (vote, video_id) => {
@@ -35,4 +37,10 @@ export const signinUser = (username, password) => {
 
 export const GetCommentsByVideoId = (video_id) => {
   return api.get(`/comments/${video_id}`);
+};
+
+export const getTags = () => {
+  return api.get("/tags").then(({ data: { tags } }) => {
+    return tags;
+  });
 };
