@@ -39,11 +39,12 @@ export default Home = ({ navigation }) => {
     });
   }, []);
   useEffect(() => {
-    api.getVideos().then((videos) => {
+    api.getVideos(tags.join(",")).then((videos) => {
       setVideos(videos);
     });
   }, [tags]);
-
+  console.log(tags);
+  console.log(videos);
   return (
     <View style={styles.container}>
       <DropDownPicker
