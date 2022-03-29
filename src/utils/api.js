@@ -4,9 +4,10 @@ const api = axios.create({
   baseURL: "https://nc-portfolio-app.herokuapp.com/api",
 });
 
-export const getVideos = (tag, sortBy, orderBy) => {
+
+export const getVideos = (tag, sortBy, orderBy, username) => {
   return api
-    .get(`/videos`, { params: { tag, sortBy, orderBy } })
+    .get(`/videos`, { params: { username, tag, sortBy, orderBy } })
     .then(({ data: { videos } }) => videos);
 };
 
@@ -22,8 +23,6 @@ export const postCloudinary = (url, formData, tags) => {
 };
 
 export const postVideoToDatabase = (returnData) => {
-  const videoData = {};
-  console.log(returnData);
   return api.post("/videos", returnData).then(() => {});
 };
 
@@ -39,8 +38,21 @@ export const GetCommentsByVideoId = (video_id) => {
   return api.get(`/comments/${video_id}`);
 };
 
+
 export const getTags = () => {
   return api.get("/tags").then(({ data: { tags } }) => {
     return tags;
   });
+
+export const postUser = (username, password, type) => {
+  return api
+    .post("/users", { username, password, type })
+    .then(({ data: { user } }) => {
+      return user;
+    });
+};
+
+export const patchUser = ({ username, bio, avatar_url, social_url }) => {
+  return api.patch(`/users/${username}`, { bio, avatar_url, social_url });
+
 };

@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeStackNavigator } from "../navigation/StackNavigation";
 import { useContext } from "react";
 import { LoginContext } from "../contexts/LoginContext";
-import UserPage from "../components/UserPage";
+
 import Upload from "../components/Upload";
-import Login from "../components/Login";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
-import SignInAndUp from "../components/SignInAndUp";
+import SignInAndUp from "./SignInAndUp";
+import User from "./User";
 
 const BottomTabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -38,7 +38,7 @@ const BottomTabNavigator = () => {
       <Tab.Screen name="Upload" component={Upload} />
       <Tab.Screen
         name="Profile"
-        component={loggedIn ? UserPage : SignInAndUp} //As above, state will determine what page is rendered
+        component={loggedIn ? User : SignInAndUp} //As above, state will determine what page is rendered
         options={{ tabBarBadge: 3 }} //Option to show notifications further into the project
       />
     </Tab.Navigator>

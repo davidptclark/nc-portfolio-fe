@@ -19,11 +19,17 @@ export default UserPage = ({ navigation }) => {
       <Text style={styles.userType}>{user.type}</Text>
       <Text style={styles.bio}>{user.bio}</Text>
       <Button
+        title="Videos"
+        onPress={() => {
+          navigation.navigate("User Videos");
+        }}
+      />
+      <Button
         title="Edit"
         onPress={() => {
           navigation.navigate("Edit Profile");
         }}
-      ></Button>
+      />
       <Button
         onPress={() => {
           setLoggedIn(false);
