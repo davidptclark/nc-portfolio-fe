@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+import { Dimensions } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -9,6 +9,14 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black",
+  },
+  videoInfo: {
+    height: "27%",
+    width: "100%",
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
+    padding: 10,
+    marginTop: -20,
+    flex: 0,
   },
   textInput: {
     backgroundColor: "white",
@@ -20,11 +28,23 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     elevation: 3,
   },
+  videoTitle: {
+    color: "white",
+    textAlign: "right",
+
+    fontWeight: "bold",
+  },
+  videoText: {
+    textAlign: "center",
+    color: "white",
+  },
+  videoInfoText: {
+    color: "white",
+  },
   video: {
-    alignSelf: "center",
-    width: 320,
-    height: 200,
-    margin: 10,
+    width: "100%",
+    height: "100%",
+    position: "absolute",
   },
   avatarUrl: {
     width: 100,
@@ -43,16 +63,22 @@ const styles = StyleSheet.create({
   userType: {
     fontWeight: "bold",
   },
+  dropDown: { marginBottom: 0 },
+  userVideoContainer: {
+    justifyContent: "flex-end",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height - 130,
+  },
   videoContainer: {
-    borderWidth: 2,
-    padding: 10,
-    margin: 5,
+    justifyContent: "flex-end",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height - 180,
   },
   videoOptionContainer: {
     flex: 0,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "center",
   },
   loginContainer: {
     margin: 10,
