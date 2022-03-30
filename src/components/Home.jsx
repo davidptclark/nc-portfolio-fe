@@ -1,16 +1,17 @@
 import * as api from "../utils/api";
 
-import { Dimensions } from "react-native";
-import { View } from "react-native";
+// import { Dimensions } from "react-native";
+import { View, Dimensions, FlatList, RefreshControl } from "react-native";
 import CustomVideo from "./CustomVideo";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useState, useRef } from "react";
-import { FlatList } from "react-native";
+// import { FlatList } from "react-native";
 
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
 
 export default Home = ({ navigation }) => {
+  const [refreshing, setRefreshing] = useState(false);
   const [videos, setVideos] = useState([]);
   const [open, setOpen] = useState(false);
   const [tags, setTags] = useState([]);
@@ -26,7 +27,7 @@ export default Home = ({ navigation }) => {
       setItems(
         apiTags.map(({ tag }) => {
           return { label: tag, value: tag };
-        }),
+        })
       );
     });
   }, []);
