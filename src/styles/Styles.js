@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { Dimensions } from "react-native";
 const styles = StyleSheet.create({
   container: {
@@ -162,7 +162,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   appLogo: {
-    marginTop: 150,
+    ...Platform.select({
+      ios: {
+        marginTop: 150,
+      },
+      android: {
+        marginTop: 30,
+      },
+    }),
     width: 300,
     height: 150,
   },

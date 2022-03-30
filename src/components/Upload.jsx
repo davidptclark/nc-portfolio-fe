@@ -18,6 +18,7 @@ import * as ImagePicker from "expo-image-picker";
 import { postCloudinary, postVideoToDatabase } from "../utils/api";
 
 import AddTags from "./AddTags";
+import CustomButton from "./CustomButton";
 
 export default Upload = ({ navigation }) => {
   const [video, setVideo] = useState(null);
@@ -120,7 +121,7 @@ export default Upload = ({ navigation }) => {
         >
           <View style={styles.containerScreen}>
             {video && <Text>Your video is ready to be uploaded</Text>}
-            <Button
+            <CustomButton
               title={
                 video === null
                   ? "Pick an video from gallery"
@@ -163,7 +164,7 @@ export default Upload = ({ navigation }) => {
               <AddTags setTags={setTags} />
             </View>
 
-            <Button title="Upload" onPress={() => handleUpload(video)} />
+            <CustomButton title="Upload" onPress={() => handleUpload(video)} />
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
