@@ -34,7 +34,11 @@ const BottomTabNavigator = () => {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Home" component={HomeStackNavigator} />
+      <Tab.Screen
+        name="Home"
+        component={HomeStackNavigator}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen name="Upload" component={Upload} />
       <Tab.Screen
         name="Profile"
