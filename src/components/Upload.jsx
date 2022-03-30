@@ -43,47 +43,49 @@ export default Upload = ({ navigation }) => {
   };
 
   function handleUpload(file) {
-    if (file !== null) {
-      setIsLoading(true);
-
-      const url = `https://api.cloudinary.com/v1_1/ncapp/auto`;
-
-      let newfile = {
-        uri: file,
-        type: `test/${file.split(".")[1]}`,
-        name: `test.${file.split(".")[1]}`,
-      };
-
-      const formData = new FormData();
-      formData.append("file", newfile);
-      formData.append("upload_preset", "votugmno");
-      formData.append("tags", tags.join(","));
-
-      return postCloudinary(url, formData)
-        .then((data) => {
-          const videoData = {
-            title: titleText,
-            description: descriptionText,
-            cloudinary_id: data.public_id,
-            tags: tags,
-            username: user.username,
-          };
-
-          return postVideoToDatabase(videoData);
-        })
-        .then(() => {
-          setIsLoading(false);
-          setVideo(null);
-          setDescriptionText("");
-          setTitleText("");
-          setTags([]);
-
-          alert("Your video has been uploaded sucessfully!");
-        })
-        .catch((err) => {
-          alert(err);
-        });
+    if (!file) {
+      alert("Pick a video before uploading");
+      return;
     }
+    setIsLoading(true);
+
+    const url = `https://api.cloudinary.com/v1_1/ncapp/auto`;
+
+    let newfile = {
+      uri: file,
+      type: `test/${file.split(".")[1]}`,
+      name: `test.${file.split(".")[1]}`,
+    };
+
+    const formData = new FormData();
+    formData.append("file", newfile);
+    formData.append("upload_preset", "votugmno");
+    formData.append("tags", tags.join(","));
+
+    return postCloudinary(url, formData)
+      .then((data) => {
+        const videoData = {
+          title: titleText,
+          description: descriptionText,
+          cloudinary_id: data.asset_id,
+          tags: tags,
+          username: user.username,
+        };
+
+        return postVideoToDatabase(videoData, url, formData);
+      })
+      .then(() => {
+        setIsLoading(false);
+        setVideo(null);
+        setDescriptionText("");
+        setTitleText("");
+        setTags([]);
+
+        alert("Your video has been uploaded sucessfully!");
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   if (!loggedIn) {
@@ -127,7 +129,7 @@ export default Upload = ({ navigation }) => {
               onPress={pickVideo}
             />
 
-            <View>
+            <View style={styles.textContainer}>
               <Text style={{ color: "#888", fontSize: 16 }}>
                 Title for your video:
               </Text>
@@ -144,6 +146,7 @@ export default Upload = ({ navigation }) => {
             <View style={styles.descriptionContainer}>
               <Text style={{ color: "#888", fontSize: 16 }}>Description:</Text>
               <TextInput
+                multiline={true}
                 style={styles.textInputDescription}
                 placeholder="Write a brief description of your video"
                 onChangeText={(newDescriptionText) => {
@@ -153,16 +156,14 @@ export default Upload = ({ navigation }) => {
               />
             </View>
 
-            <View style={styles.tagContainerContainer}>
-              <Text style={{ color: "#888", fontSize: 16 }}>
-                Tags (Add your tag and then press space)
+            <View style={styles.tagContainer}>
+              <Text style={styles.tagText}>
+                Tags: (Add your tag and then press space)
               </Text>
               <AddTags setTags={setTags} />
             </View>
 
             <Button title="Upload" onPress={() => handleUpload(video)} />
-
-            <View></View>
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
@@ -175,6 +176,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    padding: 10,
   },
 
   containerLoading: {
@@ -190,25 +192,36 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   textInputDescription: {
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    textAlignVertical: "top",
     backgroundColor: "white",
     height: 175,
-    width: 350,
+    width: 325,
     borderRadius: 25,
-    paddingLeft: 10,
+
     marginTop: 10,
   },
   textInput: {
     backgroundColor: "white",
     height: 50,
-    width: 350,
+    width: 325,
     borderRadius: 25,
     paddingLeft: 10,
     marginTop: 10,
   },
-
   descriptionContainer: {
-    margin: 25,
+    marginVertical: 15,
   },
+  textContainer: { marginVertical: 15 },
+
+  tagContainer: {
+    marginVertical: 15,
+    margin: 0,
+    padding: 0,
+    width: 325,
+  },
+  tagText: { color: "#888", fontSize: 16, marginBottom: 10 },
   notLoggedInContainer: {
     height: "100%",
 
