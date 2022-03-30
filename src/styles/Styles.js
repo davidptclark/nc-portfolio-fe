@@ -117,18 +117,26 @@ const styles = StyleSheet.create({
   commentAuthor: {
     fontStyle: "italic",
     flexDirection: "row",
-    fontSize: 10,
+    fontSize: 12,
     textAlign: "left",
+    paddingLeft: 7,
   },
   commentDate: {
     fontStyle: "italic",
     flexDirection: "row",
-    fontSize: 10,
+    fontSize: 8,
     textAlign: "right",
   },
   avatar_image: {
-    height: 50,
-    width: 50,
+    height: 30,
+    width: 30,
+    borderRadius: 100,
+  },
+  headerComments: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingBottom: 5,
   },
 });
 export default styles;
