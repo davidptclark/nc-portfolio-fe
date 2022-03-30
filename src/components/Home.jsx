@@ -48,6 +48,7 @@ export default Home = ({ navigation }) => {
   };
 
   const data = videos.map((video) => {
+    console.log(video.cloudinary_id);
     return {
       url: cld.video(video.cloudinary_id).toURL(),
       id: video.cloudinary_id,
