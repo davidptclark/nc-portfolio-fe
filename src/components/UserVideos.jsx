@@ -7,11 +7,9 @@ import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
 import CustomButton from "./CustomButton";
 
-
 import { getVideos } from "../utils/api";
-import CustomVideo from "./CustomVideo";
+import CustomUserVideo from "./CustomUserVideo";
 function UserVideos({ navigation }) {
-
   const { user } = useContext(UserContext);
   const [videos, setVideos] = useState([]);
   const cld = new Cloudinary({
@@ -41,9 +39,12 @@ function UserVideos({ navigation }) {
           };
         })}
         renderItem={({ item }) => (
-
-          <CustomVideo item={item} navigation={navigation} userVideo={true} />
-
+          <CustomUserVideo
+            item={item}
+            navigation={navigation}
+            userVideo={true}
+            setVideos={setVideos}
+          />
         )}
       />
     </View>
