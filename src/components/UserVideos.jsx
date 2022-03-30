@@ -4,7 +4,8 @@ import { useEffect, useContext, useState } from "react";
 import { View, FlatList } from "react-native";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
-import { getVideos } from "../utils/api";
+import { deleteVideo, getVideos } from "../utils/api";
+import CustomButton from "./CustomButton";
 function UserVideos() {
   const { user } = useContext(UserContext);
   const [videos, setVideos] = useState([]);
@@ -36,6 +37,22 @@ function UserVideos() {
               useNativeControls
               resizeMode="contain"
               isLooping
+            />
+            <CustomButton
+              title="Delete"
+              onPress={() => {
+                deleteVideo(item.id)
+                  .then(() => {
+                    setVideos((currentVideos) => {
+                      return currentVideos.filter((video) => {
+                        return video.cloudinary_id !== item.id;
+                      });
+                    });
+                  })
+                  .catch((err) => {
+                    console.log(err.response);
+                  });
+              }}
             />
           </View>
         )}

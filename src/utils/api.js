@@ -64,3 +64,6 @@ export const postUser = (username, password, type) => {
 export const patchUser = ({ username, bio, avtar_url, social_url }) => {
   return api.patch(`/users/${username}`, { bio, avtar_url, social_url });
 };
+export const deleteVideo = (videoId) => {
+  return api.delete(`/videos/${videoId}`);
+};
