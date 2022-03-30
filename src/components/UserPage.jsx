@@ -8,8 +8,13 @@ import avatar from "../../avatar.jpg";
 export default UserPage = ({ navigation }) => {
   const { user } = useContext(UserContext);
   const { setLoggedIn } = useContext(LoginContext);
+  const logo = require("../../assets/nc_logo.png");
+
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={styles.logoContainer}>
+        <Image style={styles.appLogo} source={logo} />
+      </View>
       <Image
         style={styles.avatarUrl}
         source={user.avatar_url ? { uri: user.avatarUrl } : avatar}
