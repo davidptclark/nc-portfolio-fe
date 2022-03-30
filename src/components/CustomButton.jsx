@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 50,
     elevation: 3,
-    backgroundColor: "blue",
+    backgroundColor: "purple",
     paddingTop: 10,
     paddingBottom: 10,
     marginBottom: 5,
