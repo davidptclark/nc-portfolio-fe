@@ -11,6 +11,7 @@ export default AvatarUrl = ({ username }) => {
       setUrl(result.data.user.avatar_url);
     });
   }, []);
+
   return (
     <View>
       {url !== "" && (
