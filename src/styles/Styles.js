@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     borderRadius: 50,
-    borderColor: "red", //black
+    borderColor: "black",
     paddingBottom: 5,
     paddingTop: 5,
   },
@@ -89,12 +89,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     backgroundColor: "#d6dcf0",
-    padding: 15,
+    padding: 10,
     margin: 10,
   },
   commentBody: {
-    padding: 10,
+    padding: 5,
     fontStyle: "italic",
+    paddingLeft: 35,
   },
   commentDetails: {
     padding: 10,
@@ -116,6 +117,7 @@ const styles = StyleSheet.create({
   },
   commentAuthor: {
     fontStyle: "italic",
+    fontWeight: "bold",
     flexDirection: "row",
     fontSize: 12,
     textAlign: "left",
