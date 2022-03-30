@@ -1,12 +1,17 @@
 import { Cloudinary } from "@cloudinary/url-gen";
-import { Video } from "expo-av";
+import { Dimensions } from "react-native";
 import { useEffect, useContext, useState } from "react";
 import { View, FlatList } from "react-native";
 import { UserContext } from "../contexts/UserContext";
+
 import styles from "../styles/Styles";
-import { deleteVideo, getVideos } from "../utils/api";
 import CustomButton from "./CustomButton";
-function UserVideos() {
+
+
+import { getVideos } from "../utils/api";
+import CustomVideo from "./CustomVideo";
+function UserVideos({ navigation }) {
+
   const { user } = useContext(UserContext);
   const [videos, setVideos] = useState([]);
   const cld = new Cloudinary({
@@ -20,41 +25,25 @@ function UserVideos() {
   return (
     <View>
       <FlatList
+        snapToInterval={Dimensions.get("window").height - 130}
+        snapToAlignment={"start"}
+        decelerationRate={"fast"}
+        keyExtractor={(item) => item.id}
         data={videos.map((video) => {
           return {
             url: cld.video(video.cloudinary_id).toURL(),
             id: video.cloudinary_id,
             votes: video.votes,
+            title: video.title,
+            created_at: video.created_at,
+            description: video.description,
+            tags: video.video_tag_array,
           };
         })}
         renderItem={({ item }) => (
-          <View style={styles.videoContainer}>
-            <Video
-              style={styles.video}
-              source={{
-                uri: item.url,
-              }}
-              useNativeControls
-              resizeMode="contain"
-              isLooping
-            />
-            <CustomButton
-              title="Delete"
-              onPress={() => {
-                deleteVideo(item.id)
-                  .then(() => {
-                    setVideos((currentVideos) => {
-                      return currentVideos.filter((video) => {
-                        return video.cloudinary_id !== item.id;
-                      });
-                    });
-                  })
-                  .catch((err) => {
-                    console.log(err.response);
-                  });
-              }}
-            />
-          </View>
+
+          <CustomVideo item={item} navigation={navigation} userVideo={true} />
+
         )}
       />
     </View>

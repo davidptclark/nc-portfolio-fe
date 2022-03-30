@@ -20,7 +20,6 @@ const BottomTabNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
           if (route.name === "Projects") {
             iconName = focused ? "code-slash" : "code-slash-outline";
           } else if (route.name === "Upload") {
@@ -43,7 +42,7 @@ const BottomTabNavigator = () => {
       <Tab.Screen
         name="Profile"
         component={loggedIn ? User : SignInAndUp} //As above, state will determine what page is rendered
-        options={{ tabBarBadge: 3, headerShown: false }} //Option to show notifications further into the project
+        options={{ headerShown: false }} //Option to show notifications further into the project
       />
     </Tab.Navigator>
   );
