@@ -6,7 +6,6 @@ import CustomVideo from "./CustomVideo";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useState, useRef } from "react";
 import { FlatList } from "react-native";
-
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
 

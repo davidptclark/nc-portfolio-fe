@@ -72,3 +72,7 @@ export const patchUser = ({
 export const deleteVideo = (videoId) => {
   return api.delete(`/videos/${videoId}`);
 };
+
+export const GetUserByName = (username) => {
+  return api.get(`/users/${username}`);
+};
