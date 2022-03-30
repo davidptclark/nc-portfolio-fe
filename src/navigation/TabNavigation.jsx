@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeStackNavigator } from "../navigation/StackNavigation";
 import { useContext } from "react";
 import { LoginContext } from "../contexts/LoginContext";
-import UserPage from "../components/UserPage";
+
 import Upload from "../components/Upload";
-import Login from "../components/Login";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
-import SignInAndUp from "../components/SignInAndUp";
+import SignInAndUp from "./SignInAndUp";
+import User from "./User";
 
 const BottomTabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -20,9 +20,8 @@ const BottomTabNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
-          if (route.name === "Home") {
-            iconName = focused ? "home" : "home-outline";
+          if (route.name === "Projects") {
+            iconName = focused ? "code-slash" : "code-slash-outline";
           } else if (route.name === "Upload") {
             iconName = focused ? "cloud-upload" : "cloud-upload-outline";
           } else if (route.name === "Profile") {
@@ -34,12 +33,16 @@ const BottomTabNavigator = () => {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Home" component={HomeStackNavigator} />
+      <Tab.Screen
+        name="Projects"
+        component={HomeStackNavigator}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen name="Upload" component={Upload} />
       <Tab.Screen
         name="Profile"
-        component={loggedIn ? UserPage : SignInAndUp} //As above, state will determine what page is rendered
-        options={{ tabBarBadge: 3 }} //Option to show notifications further into the project
+        component={loggedIn ? User : SignInAndUp} //As above, state will determine what page is rendered
+        options={{ headerShown: false }} //Option to show notifications further into the project
       />
     </Tab.Navigator>
   );

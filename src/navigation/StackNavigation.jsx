@@ -1,15 +1,16 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../components/Home";
-import Comments from "../components/Comments";
+import CommentsPage from "../components/CommentsPage";
 
 const Stack = createNativeStackNavigator();
 
 const HomeStackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Projects" component={Home} />
-      <Stack.Screen name="Comments" component={Comments} />
+      <Stack.Screen name="Projects " component={Home} />
+      {/* Trailing space needed now Home is the project page to prevent nesting warnings */}
+      <Stack.Screen name="Comments" component={CommentsPage} />
     </Stack.Navigator>
   );
 };
