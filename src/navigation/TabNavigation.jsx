@@ -43,7 +43,7 @@ const BottomTabNavigator = () => {
       <Tab.Screen
         name="Profile"
         component={loggedIn ? User : SignInAndUp} //As above, state will determine what page is rendered
-        options={{ tabBarBadge: 3 }} //Option to show notifications further into the project
+        options={{ tabBarBadge: 3, headerShown: false }} //Option to show notifications further into the project
       />
     </Tab.Navigator>
   );
