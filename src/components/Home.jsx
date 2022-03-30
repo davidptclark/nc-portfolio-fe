@@ -7,7 +7,6 @@ import { useEffect, useState, useRef } from "react";
 
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
-import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 export default Home = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
@@ -35,7 +34,7 @@ export default Home = ({ navigation }) => {
     api.getVideos(tags.join(",")).then((videos) => {
       setVideos(videos);
     });
-  }, [tags]);
+  }, [tags, refreshing]);
 
   const wait = (timeout) => {
     return new Promise((resolve) => setTimeout(resolve, timeout));
