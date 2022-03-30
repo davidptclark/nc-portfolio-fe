@@ -1,15 +1,9 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { Video } from "expo-av";
 import styles from "../styles/Styles";
 import Likes from "./Likes";
 import * as React from "react";
 import { useState } from "react";
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { View, Text, TouchableWithoutFeedback } from "react-native";
 export default function CustomVideo({ item, navigation, userVideo }) {
   const videoref = React.useRef(null);
   const [playing, setPlaying] = useState(true);

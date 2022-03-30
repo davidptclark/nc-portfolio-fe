@@ -14,17 +14,7 @@ export default Home = ({ navigation }) => {
   const [videos, setVideos] = useState([]);
   const [open, setOpen] = useState(false);
   const [tags, setTags] = useState([]);
-  const [items, setItems] = useState([
-    { label: "Language", value: "language" },
-    { label: "Javascript", value: "javascript", parent: "language" },
-    { label: "Python", value: "python", parent: "language" },
-
-    { label: "Front End", value: "frontEnd" },
-    { label: "React", value: "react", parent: "frontEnd" },
-    { label: "React Native", value: "reactNative", parent: "frontEnd" },
-    { label: "Back End", value: "backEnd" },
-    { label: "Express", value: "express", parent: "backEnd" },
-  ]);
+  const [items, setItems] = useState([]);
   const cld = new Cloudinary({
     cloud: {
       cloudName: "ncapp",
@@ -48,10 +38,11 @@ export default Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <DropDownPicker
-        containerStyle={{
+        dropDownStyle={{
           borderBottomWidth: 2,
           borderTopWidth: 2,
-          elevation: 999,
+          elevation: 5,
+          borderRadius: 0,
         }}
         searchable
         placeholder="Tags"
@@ -62,7 +53,13 @@ export default Home = ({ navigation }) => {
         setValue={setTags}
         setItems={setItems}
         multiple
-        style={{ borderWidth: 0 }}
+        style={{
+          borderRadius: 0,
+          borderWidth: 0,
+          elevation: 5,
+          borderBottomWidth: 2,
+          borderTopWidth: 2,
+        }}
       />
       <FlatList
         snapToInterval={Dimensions.get("window").height - 180}
