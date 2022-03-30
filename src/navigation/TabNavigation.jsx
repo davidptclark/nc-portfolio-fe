@@ -21,8 +21,8 @@ const BottomTabNavigator = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === "Home") {
-            iconName = focused ? "home" : "home-outline";
+          if (route.name === "Projects") {
+            iconName = focused ? "code-slash" : "code-slash-outline";
           } else if (route.name === "Upload") {
             iconName = focused ? "cloud-upload" : "cloud-upload-outline";
           } else if (route.name === "Profile") {
@@ -35,7 +35,7 @@ const BottomTabNavigator = () => {
       })}
     >
       <Tab.Screen
-        name="Home"
+        name="Projects"
         component={HomeStackNavigator}
         options={{ headerShown: false }}
       />
