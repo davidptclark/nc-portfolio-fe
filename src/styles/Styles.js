@@ -11,12 +11,11 @@ const styles = StyleSheet.create({
     color: "black",
   },
   videoInfo: {
-    height: "25%",
+    height: "27%",
     width: "100%",
     backgroundColor: "rgba(52, 52, 52, 0.5)",
     padding: 10,
     marginTop: -20,
-
     flex: 0,
   },
   textInput: {
@@ -28,6 +27,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     borderRadius: 50,
     elevation: 3,
+  },
+  videoTitle: {
+    color: "white",
+    textAlign: "right",
+
+    fontWeight: "bold",
   },
   videoText: {
     textAlign: "center",
@@ -59,6 +64,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   dropDown: { marginBottom: 0 },
+  userVideoContainer: {
+    justifyContent: "flex-end",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height - 130,
+  },
   videoContainer: {
     justifyContent: "flex-end",
     width: Dimensions.get("window").width,

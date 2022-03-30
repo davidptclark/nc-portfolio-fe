@@ -10,7 +10,7 @@ import {
   Text,
   TouchableWithoutFeedback,
 } from "react-native";
-export default function CustomVideo({ item, navigation }) {
+export default function CustomVideo({ item, navigation, userVideo }) {
   const videoref = React.useRef(null);
   const [playing, setPlaying] = useState(true);
 
@@ -29,8 +29,9 @@ export default function CustomVideo({ item, navigation }) {
         onPlayPausePress();
       }}
     >
-      <View style={styles.videoContainer}>
-        <Text style={styles.videoText}>{item.title}</Text>
+      <View
+        style={userVideo ? styles.userVideoContainer : styles.videoContainer}
+      >
         <Video
           style={styles.video}
           source={{
@@ -42,6 +43,8 @@ export default function CustomVideo({ item, navigation }) {
           ref={videoref}
         />
         <View style={styles.videoInfo}>
+          <Text style={styles.videoTitle}>{item.title}</Text>
+
           <Text style={styles.videoInfoText}>{item.description}</Text>
           <Text style={styles.videoInfoText}>
             {new Date(item.created_at).toLocaleDateString()}
