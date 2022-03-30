@@ -98,7 +98,7 @@ export default Upload = ({ navigation }) => {
             navigation.navigate("Profile");
           }}
         >
-          Log in before uploading a video.
+          Log in before uploading a video
         </Text>
       </View>
     );
@@ -124,7 +124,7 @@ export default Upload = ({ navigation }) => {
             <CustomButton
               title={
                 video === null
-                  ? "Pick an video from gallery"
+                  ? "Pick a video from gallery"
                   : "Press to change selection"
               }
               onPress={pickVideo}
