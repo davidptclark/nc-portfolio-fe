@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#d6dcf0",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   videoContainer: {
-    borderWidth: 2,
+    borderWidth: 2, // 2
     padding: 20,
     margin: 10,
   },
   videoOptionContainer: {
-    flex: 0,
+    flex: 2,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     borderRadius: 50,
-    borderColor: "black",
+    borderColor: "red", //black
     paddingBottom: 5,
     paddingTop: 5,
   },
@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     elevation: 3,
-    backgroundColor: "white",},
+    backgroundColor: "white",
+  },
 
   commentContainer: {
     borderWidth: 2,
@@ -97,7 +98,6 @@ const styles = StyleSheet.create({
   },
   commentDetails: {
     padding: 10,
-
   },
   header: {
     margin: 0,
@@ -113,6 +113,22 @@ const styles = StyleSheet.create({
     margin: 5,
     fontSize: 16,
     color: "red",
+  },
+  commentAuthor: {
+    fontStyle: "italic",
+    flexDirection: "row",
+    fontSize: 10,
+    textAlign: "left",
+  },
+  commentDate: {
+    fontStyle: "italic",
+    flexDirection: "row",
+    fontSize: 10,
+    textAlign: "right",
+  },
+  avatar_image: {
+    height: 50,
+    width: 50,
   },
 });
 export default styles;

@@ -5,6 +5,7 @@ import { Video } from "expo-av";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useState, useRef } from "react";
 import { FlatList } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
 
@@ -69,8 +70,10 @@ export default Home = ({ navigation }) => {
             />
             <View style={styles.videoOptionContainer}>
               <Likes item={item} />
-              <Button
-                title="Comments"
+              <FontAwesome
+                name="commenting-o"
+                size={24}
+                color="black"
                 onPress={() => navigation.navigate("Comments", item.id)}
               />
             </View>

@@ -34,3 +34,7 @@ export const signinUser = (username, password) => {
 export const GetCommentsByVideoId = (video_id) => {
   return api.get(`/comments/${video_id}`);
 };
+
+export const GetUserByName = (username) => {
+  return api.get(`/users/${username}`);
+};

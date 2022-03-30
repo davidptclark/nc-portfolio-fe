@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { View, Text, TextInput } from "react-native";
-import { patchUser } from "../../api";
+import { patchUser } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/Styles";
 import CustomButton from "./CustomButton";
@@ -23,7 +23,7 @@ function EditProfile({ navigation }) {
         accessibilityLabel="Save"
         disabled={
           !/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
-            newUrl
+            newUrl,
           )
         }
         onPress={() => {
