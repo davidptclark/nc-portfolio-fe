@@ -63,29 +63,40 @@ export default Home = ({ navigation }) => {
             url: cld.video(video.cloudinary_id).toURL(),
             id: video.cloudinary_id,
             votes: video.votes,
+            title: video.title,
+            created_at: video.created_at,
+            description: video.description,
+            tags: video.video_tag_array,
           };
         })}
         renderItem={({ item }) => (
-          <View style={styles.videoContainer}>
-            <Video
-              style={styles.video}
-              source={{
-                uri: item.url,
-              }}
-              useNativeControls
-              resizeMode="contain"
-              isLooping
-            />
-            <View style={styles.videoOptionContainer}>
-              <Likes item={item} />
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Comments", item.id)}
-                style={{ width: "30%" }}
-              >
-                <Ionicons name={"chatbubbles-outline"} size={32} />
-              </TouchableOpacity>
+          <>
+            {/* {console.log(item)} */}
+            <View style={styles.videoContainer}>
+              <Text>{item.title}</Text>
+              <Video
+                style={styles.video}
+                source={{
+                  uri: item.url,
+                }}
+                useNativeControls
+                resizeMode="contain"
+                isLooping
+              />
+              <Text>{item.description}</Text>
+              <Text>{new Date(item.created_at).toLocaleDateString()}</Text>
+              <Text>{item.tags}</Text>
+              <View style={styles.videoOptionContainer}>
+                <Likes item={item} />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Comments", item.id)}
+                  style={{ width: "30%" }}
+                >
+                  <Ionicons name={"chatbubbles-outline"} size={32} />
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
+          </>
         )}
         keyExtractor={(item) => item.id}
       />
