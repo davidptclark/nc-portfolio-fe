@@ -192,7 +192,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   textInputDescription: {
-    padding: 20,
+    paddingVertical: 20,
+    paddingHorizontal: 10,
     textAlignVertical: "top",
     backgroundColor: "white",
     height: 175,
