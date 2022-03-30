@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 320,
     height: 200,
-    margin: 40,
+    margin: 10,
   },
   avatarUrl: {
     width: 100,
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
   },
   videoContainer: {
     borderWidth: 2,
-    padding: 20,
-    margin: 10,
+    padding: 10,
+    margin: 5,
   },
   videoOptionContainer: {
     flex: 0,
@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     elevation: 3,
-    backgroundColor: "white",},
+    backgroundColor: "white",
+  },
 
   commentContainer: {
     borderWidth: 2,
@@ -97,7 +98,6 @@ const styles = StyleSheet.create({
   },
   commentDetails: {
     padding: 10,
-
   },
   header: {
     margin: 0,
@@ -121,6 +121,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   CommentButton: {
+    flex: 0,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  DeleteButton: {
     flex: 0,
     flexDirection: "row",
 

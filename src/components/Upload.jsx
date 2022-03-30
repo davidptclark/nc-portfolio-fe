@@ -12,19 +12,21 @@ import {
 } from "react-native";
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { LoginContext } from "../contexts/LoginContext";
 import * as ImagePicker from "expo-image-picker";
 
 import { postCloudinary, postVideoToDatabase } from "../utils/api";
 
 import AddTags from "./AddTags";
 
-export default Upload = () => {
+export default Upload = ({ navigation }) => {
   const [video, setVideo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [titleText, setTitleText] = useState("");
   const [descriptionText, setDescriptionText] = useState("");
   const [tags, setTags] = useState([]);
   const { user } = useContext(UserContext);
+  const { loggedIn } = useContext(LoginContext);
 
   const pickVideo = async () => {
     // No permissions request is necessary for launching the image library
@@ -86,6 +88,20 @@ export default Upload = () => {
       });
   }
 
+  if (!loggedIn) {
+    return (
+      <View style={styles.notLoggedInContainer}>
+        <Text
+          style={styles.notLoggedInText}
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+        >
+          Log in before uploading a video.
+        </Text>
+      </View>
+    );
+  }
   if (isLoading) {
     return (
       <View style={styles.containerLoading}>
@@ -205,4 +221,20 @@ const styles = StyleSheet.create({
     width: 325,
   },
   tagText: { color: "#888", fontSize: 16, marginBottom: 10 },
+  notLoggedInContainer: {
+    height: "100%",
+
+    margin: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  notLoggedInText: {
+    backgroundColor: "blue",
+    color: "white",
+    paddingHorizontal: "15%",
+    padding: 10,
+    borderRadius: 30,
+    textAlign: "center",
+    fontWeight: "bold",
+  },
 });
