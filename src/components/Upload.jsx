@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   notLoggedInText: {
-    backgroundColor: "blue",
+    backgroundColor: "purple",
     color: "white",
     paddingHorizontal: "15%",
     padding: 10,
