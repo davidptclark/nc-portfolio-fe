@@ -27,25 +27,19 @@ export default AddTags = ({ setTags }) => {
 
 const styles = StyleSheet.create({
   tagContainer: {
-    margin: 10,
-    borderRadius: 10,
+    borderRadius: 25,
     backgroundColor: "#FFFFFF",
-    justifyContent: "space-evenly",
-    width: 300,
+
+    width: 325,
   },
   tag: {
     backgroundColor: "#2A5353",
-    borderRadius: 10,
-    padding: 10,
+    borderRadius: 15,
+    padding: 6,
     margin: 10,
-    borderRadius: 25,
   },
   textTag: {
     color: "#EBEBEB",
     fontWeight: "bold",
-  },
-
-  tagContainerContainer: {
-    margin: 18,
   },
 });
