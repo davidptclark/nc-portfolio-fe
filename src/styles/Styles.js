@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+import { Dimensions } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -9,6 +9,14 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black",
+  },
+  videoInfo: {
+    height: "100%",
+    justifyContent: "flex-end",
+    padding: 10,
+    borderColor: "white",
+    borderWidth: 3,
+    flex: 0,
   },
   textInput: {
     backgroundColor: "white",
@@ -21,10 +29,9 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   video: {
-    alignSelf: "center",
-    width: 320,
-    height: 200,
-    margin: 10,
+    width: "100%",
+    height: "100%",
+    position: "absolute",
   },
   avatarUrl: {
     width: 100,
@@ -44,9 +51,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   videoContainer: {
-    borderWidth: 2,
-    padding: 10,
-    margin: 5,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height - 180,
+    flexDirection: "column",
   },
   videoOptionContainer: {
     flex: 0,

@@ -1,11 +1,12 @@
 import * as api from "../utils/api";
 import Likes from "./Likes";
-import { View, TouchableOpacity, Text } from "react-native";
-import { Video } from "expo-av";
+import { Dimensions } from "react-native";
+import { View } from "react-native";
+import CustomVideo from "./CustomVideo";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useState, useRef } from "react";
 import { FlatList } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
 
@@ -35,7 +36,7 @@ export default Home = ({ navigation }) => {
       setItems(
         apiTags.map(({ tag }) => {
           return { label: tag, value: tag };
-        })
+        }),
       );
     });
   }, []);
@@ -58,6 +59,9 @@ export default Home = ({ navigation }) => {
         multiple
       />
       <FlatList
+        snapToInterval={Dimensions.get("window").height - 180}
+        snapToAlignment={"start"}
+        decelerationRate={"fast"}
         data={videos.map((video) => {
           return {
             url: cld.video(video.cloudinary_id).toURL(),
@@ -70,32 +74,7 @@ export default Home = ({ navigation }) => {
           };
         })}
         renderItem={({ item }) => (
-          <>
-            <View style={styles.videoContainer}>
-              <Text>{item.title}</Text>
-              <Video
-                style={styles.video}
-                source={{
-                  uri: item.url,
-                }}
-                useNativeControls
-                resizeMode="contain"
-                isLooping
-              />
-              <Text>{item.description}</Text>
-              <Text>{new Date(item.created_at).toLocaleDateString()}</Text>
-              <Text>{item.tags}</Text>
-              <View style={styles.videoOptionContainer}>
-                <Likes item={item} />
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("Comments", item.id)}
-                  style={{ width: "30%" }}
-                >
-                  <Ionicons name={"chatbubbles-outline"} size={32} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </>
+          <CustomVideo item={item} navigation={navigation} />
         )}
         keyExtractor={(item) => item.id}
       />
