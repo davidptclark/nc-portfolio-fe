@@ -71,7 +71,6 @@ export default Home = ({ navigation }) => {
         })}
         renderItem={({ item }) => (
           <>
-            {/* {console.log(item)} */}
             <View style={styles.videoContainer}>
               <Text>{item.title}</Text>
               <Video
