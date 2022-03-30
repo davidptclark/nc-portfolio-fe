@@ -1,11 +1,9 @@
 import * as api from "../utils/api";
 
-// import { Dimensions } from "react-native";
 import { View, Dimensions, FlatList, RefreshControl } from "react-native";
 import CustomVideo from "./CustomVideo";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useState, useRef } from "react";
-// import { FlatList } from "react-native";
 
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
@@ -31,6 +29,7 @@ export default Home = ({ navigation }) => {
       );
     });
   }, []);
+
   useEffect(() => {
     api.getVideos(tags.join(",")).then((videos) => {
       setVideos(videos);
