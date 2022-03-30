@@ -35,6 +35,19 @@ export default Home = ({ navigation }) => {
       setVideos(videos);
     });
   }, [tags]);
+
+  const data = videos.map((video) => {
+    return {
+      url: cld.video(video.cloudinary_id).toURL(),
+      id: video.cloudinary_id,
+      votes: video.votes,
+      title: video.title,
+      created_at: video.created_at,
+      description: video.description,
+      tags: video.video_tag_array,
+    };
+  });
+
   return (
     <View style={styles.container}>
       <DropDownPicker
@@ -65,17 +78,7 @@ export default Home = ({ navigation }) => {
         snapToInterval={Dimensions.get("window").height - 180}
         snapToAlignment={"start"}
         decelerationRate={"fast"}
-        data={videos.map((video) => {
-          return {
-            url: cld.video(video.cloudinary_id).toURL(),
-            id: video.cloudinary_id,
-            votes: video.votes,
-            title: video.title,
-            created_at: video.created_at,
-            description: video.description,
-            tags: video.video_tag_array,
-          };
-        })}
+        data={data}
         renderItem={({ item }) => (
           <CustomVideo item={item} navigation={navigation} />
         )}
