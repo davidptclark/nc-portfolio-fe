@@ -173,9 +173,6 @@ export default Upload = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   containerScreen: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     padding: 10,
   },
 
@@ -197,7 +194,7 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
     backgroundColor: "white",
     height: 175,
-    width: 325,
+
     borderRadius: 25,
 
     marginTop: 10,
@@ -205,7 +202,7 @@ const styles = StyleSheet.create({
   textInput: {
     backgroundColor: "white",
     height: 50,
-    width: 325,
+
     borderRadius: 25,
     paddingLeft: 10,
     marginTop: 10,
@@ -219,7 +216,6 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     margin: 0,
     padding: 0,
-    width: 325,
   },
   tagText: { color: "#888", fontSize: 16, marginBottom: 10 },
   notLoggedInContainer: {

@@ -11,7 +11,11 @@ export default AddTags = ({ setTags }) => {
         setTags(tags);
       }}
       containerStyle={styles.tagContainer}
-      inputStyle={{ backgroundColor: "white", color: "black" }}
+      inputStyle={{
+        backgroundColor: "white",
+        color: "black",
+        borderRadius: 25,
+      }}
       renderTag={({ tag, index, onPress }) => (
         <TouchableOpacity
           style={styles.tag}
@@ -29,8 +33,6 @@ const styles = StyleSheet.create({
   tagContainer: {
     borderRadius: 25,
     backgroundColor: "#FFFFFF",
-
-    width: 325,
   },
   tag: {
     backgroundColor: "#2A5353",
