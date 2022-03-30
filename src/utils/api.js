@@ -69,3 +69,6 @@ export const patchUser = ({
 }) => {
   return api.patch(`/users/${username}`, { bio, avatar_url, social_url });
 };
+export const deleteVideo = (videoId) => {
+  return api.delete(`/videos/${videoId}`);
+};
