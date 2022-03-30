@@ -1,5 +1,5 @@
 import * as api from "../utils/api";
-import Likes from "./Likes";
+
 import { Dimensions } from "react-native";
 import { View } from "react-native";
 import CustomVideo from "./CustomVideo";
@@ -48,6 +48,11 @@ export default Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <DropDownPicker
+        containerStyle={{
+          borderBottomWidth: 2,
+          borderTopWidth: 2,
+          elevation: 999,
+        }}
         searchable
         placeholder="Tags"
         open={open}
@@ -57,6 +62,7 @@ export default Home = ({ navigation }) => {
         setValue={setTags}
         setItems={setItems}
         multiple
+        style={{ borderWidth: 0 }}
       />
       <FlatList
         snapToInterval={Dimensions.get("window").height - 180}

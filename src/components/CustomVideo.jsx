@@ -30,30 +30,25 @@ export default function CustomVideo({ item, navigation }) {
       }}
     >
       <View style={styles.videoContainer}>
-        <Text>{item.title}</Text>
+        <Text style={styles.videoText}>{item.title}</Text>
         <Video
           style={styles.video}
           source={{
             uri: item.url,
           }}
-          resizeMode="cover"
+          resizeMode="stretch"
           isLooping
           useNativeControls={false}
           ref={videoref}
         />
-        <View styles={styles.videoInfo}>
-          <Text>{item.description}</Text>
-          <Text>{new Date(item.created_at).toLocaleDateString()}</Text>
-          <Text>{item.tags}</Text>
-          <View style={styles.videoOptionContainer}>
-            <Likes item={item} />
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Comments", item.id)}
-              style={{ width: "30%" }}
-            >
-              <Ionicons name={"chatbubbles-outline"} size={32} />
-            </TouchableOpacity>
-          </View>
+        <View style={styles.videoInfo}>
+          <Text style={styles.videoInfoText}>{item.description}</Text>
+          <Text style={styles.videoInfoText}>
+            {new Date(item.created_at).toLocaleDateString()}
+          </Text>
+          <Text style={styles.videoInfoText}>{item.tags}</Text>
+
+          <Likes item={item} navigation={navigation} />
         </View>
       </View>
     </TouchableWithoutFeedback>

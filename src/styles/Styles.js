@@ -11,11 +11,12 @@ const styles = StyleSheet.create({
     color: "black",
   },
   videoInfo: {
-    height: "100%",
-    justifyContent: "flex-end",
+    height: "25%",
+    width: "100%",
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
     padding: 10,
-    borderColor: "white",
-    borderWidth: 3,
+    marginTop: -20,
+
     flex: 0,
   },
   textInput: {
@@ -27,6 +28,13 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     borderRadius: 50,
     elevation: 3,
+  },
+  videoText: {
+    textAlign: "center",
+    color: "white",
+  },
+  videoInfoText: {
+    color: "white",
   },
   video: {
     width: "100%",
@@ -50,16 +58,17 @@ const styles = StyleSheet.create({
   userType: {
     fontWeight: "bold",
   },
+  dropDown: { marginBottom: 0 },
   videoContainer: {
+    justifyContent: "flex-end",
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height - 180,
-    flexDirection: "column",
   },
   videoOptionContainer: {
     flex: 0,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "center",
   },
   loginContainer: {
     margin: 10,
