@@ -4,6 +4,7 @@ import {
   TextInput,
   View,
   ActivityIndicator,
+  Image,
 } from "react-native";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
@@ -13,6 +14,7 @@ import { signinUser } from "../utils/api";
 import CustomButton from "./CustomButton";
 
 const Login = ({ navigation }) => {
+  const logo = require("../../assets/nc_logo.png");
   const [isLoading, setIsLoading] = useState(false);
   const [newUser, setNewUser] = useState({
     username: "",
@@ -50,6 +52,9 @@ const Login = ({ navigation }) => {
     </View>
   ) : (
     <ScrollView style={styles.loginContainer}>
+      <View style={styles.logoContainer}>
+        <Image style={styles.appLogo} source={logo} />
+      </View>
       <Text style={styles.loginHeaderText}>Log In</Text>
       <Text style={styles.loginLabel}>Username</Text>
       <TextInput

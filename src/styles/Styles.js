@@ -131,5 +131,13 @@ const styles = StyleSheet.create({
 
     justifyContent: "center",
   },
+  logoContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  appLogo: {
+    width: 300,
+    height: 150,
+  },
 });
 export default styles;
