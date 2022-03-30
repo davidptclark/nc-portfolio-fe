@@ -53,3 +53,14 @@ export const deleteCommentById = (commentId) => {
   return api.delete(`/comments/${commentId}`);
 };
 
+export const postUser = (username, password, type) => {
+  return api
+    .post("/users", { username, password, type })
+    .then(({ data: { user } }) => {
+      return user;
+    });
+};
+
+export const patchUser = ({ username, bio, avtar_url, social_url }) => {
+  return api.patch(`/users/${username}`, { bio, avtar_url, social_url });
+};
