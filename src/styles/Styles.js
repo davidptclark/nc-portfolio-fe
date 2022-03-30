@@ -139,5 +139,12 @@ const styles = StyleSheet.create({
     width: 300,
     height: 150,
   },
+  editLabel: {
+    margin: 5,
+    color: "black",
+  },
+  editContainer: {
+    margin: 5,
+  },
 });
 export default styles;
