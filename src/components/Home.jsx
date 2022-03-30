@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 
 import styles from "../styles/Styles";
 import DropDownPicker from "react-native-dropdown-picker";
+import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 export default Home = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
@@ -35,6 +36,17 @@ export default Home = ({ navigation }) => {
       setVideos(videos);
     });
   }, [tags]);
+
+  const wait = (timeout) => {
+    return new Promise((resolve) => setTimeout(resolve, timeout));
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    wait(2000).then(() => {
+      setRefreshing(false);
+    });
+  };
 
   const data = videos.map((video) => {
     return {
@@ -75,6 +87,9 @@ export default Home = ({ navigation }) => {
         }}
       />
       <FlatList
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         snapToInterval={Dimensions.get("window").height - 180}
         snapToAlignment={"start"}
         decelerationRate={"fast"}
