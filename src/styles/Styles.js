@@ -146,5 +146,10 @@ const styles = StyleSheet.create({
   editContainer: {
     margin: 5,
   },
+  profileContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 export default styles;
