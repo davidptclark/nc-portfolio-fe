@@ -43,7 +43,9 @@ export default function CustomVideo({ item, navigation, userVideo }) {
           <Text style={styles.videoInfoText}>
             {new Date(item.created_at).toLocaleDateString()}
           </Text>
-          <Text style={styles.videoInfoText}>{item.tags}</Text>
+          <Text style={styles.videoInfoText}>
+            {item.tags.map((tag) => tag + "  ")}
+          </Text>
 
           <Likes item={item} navigation={navigation} />
         </View>
