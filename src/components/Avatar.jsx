@@ -13,20 +13,16 @@ export default AvatarUrl = ({ username }) => {
 
   return (
     <View>
-      {url !== "default" && (
-        <Image
-          style={styles.avatar_image}
-          source={{
-            uri: url,
-          }}
-        />
-      )}
-      {url === "default" && (
-        <Image
-          style={styles.avatar_image}
-          source={require("../../defaultAvatar.png")}
-        />
-      )}
+      <Image
+        style={styles.avatar_image}
+        source={
+          url
+            ? {
+                uri: url,
+              }
+            : require("../../avatar.jpg")
+        }
+      />
     </View>
   );
 };
