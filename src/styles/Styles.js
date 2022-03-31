@@ -3,7 +3,7 @@ import { Dimensions } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#d6dcf0",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height - 180,
   },
   videoOptionContainer: {
-    flex: 0,
+    flex: 2,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -115,12 +115,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     backgroundColor: "#d6dcf0",
-    padding: 15,
+    padding: 10,
     margin: 10,
   },
   commentBody: {
-    padding: 10,
+    padding: 5,
     fontStyle: "italic",
+    paddingLeft: 35,
   },
   commentDetails: {
     padding: 10,
@@ -139,6 +140,31 @@ const styles = StyleSheet.create({
     margin: 5,
     fontSize: 16,
     color: "red",
+  },
+  commentAuthor: {
+    fontStyle: "italic",
+    fontWeight: "bold",
+    flexDirection: "row",
+    fontSize: 12,
+    textAlign: "left",
+    paddingLeft: 7,
+  },
+  commentDate: {
+    fontStyle: "italic",
+    flexDirection: "row",
+    fontSize: 8,
+    textAlign: "right",
+  },
+  avatar_image: {
+    height: 30,
+    width: 30,
+    borderRadius: 100,
+  },
+  headerComments: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingBottom: 5,
   },
   CommentInputBox: {
     height: 40,
