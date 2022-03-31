@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import * as api from "../utils/api";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ export default Comments = ({
   setComments,
   comments,
   noOfComments,
+  navigation,
 }) => {
   const [deletedCommentId, setDeletedCommentId] = useState("");
   useEffect(() => {
@@ -31,10 +32,16 @@ export default Comments = ({
       })}
       renderItem={({ item }) => (
         <View style={styles.commentContainer}>
-          <View style={styles.headerComments}>
-            <AvatarUrl username={item.username} />
-            <Text style={styles.commentAuthor}>{item.username}</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("User", item.username);
+            }}
+          >
+            <View style={styles.headerComments}>
+              <AvatarUrl username={item.username} />
+              <Text style={styles.commentAuthor}>{item.username}</Text>
+            </View>
+          </TouchableOpacity>
 
           <Text style={styles.commentBody}>{item.comment_body}</Text>
 
