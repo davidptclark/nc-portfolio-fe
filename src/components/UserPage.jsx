@@ -12,10 +12,10 @@ export default UserPage = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.loginContainer}>
+      <View style={styles.logoContainer}>
+        <Image style={styles.appLogo} source={logo} />
+      </View>
       <View style={styles.profileContainer}>
-        <View style={styles.logoContainer}>
-          <Image style={styles.appLogo} source={logo} />
-        </View>
         <Image
           style={styles.avatarUrl}
           source={user.avatar_url ? { uri: user.avatar_url } : avatar}
@@ -29,13 +29,13 @@ export default UserPage = ({ navigation }) => {
             Linking.canOpenURL(
               user.social_url.slice(0, 8) === "https://"
                 ? user.social_url
-                : "https://" + user.social_url
+                : "https://" + user.social_url,
             ).then((result) => {
               if (result)
                 Linking.openURL(
                   user.social_url.slice(0, 8) === "https://"
                     ? user.social_url
-                    : "https://" + user.social_url
+                    : "https://" + user.social_url,
                 );
             });
           }}

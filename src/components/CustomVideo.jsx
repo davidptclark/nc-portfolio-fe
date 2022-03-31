@@ -37,14 +37,18 @@ export default function CustomVideo({ item, navigation, userVideo }) {
           ref={videoref}
         />
         <View style={styles.videoInfo}>
+          <Text style={styles.videoInfoTextUsername}>{item.username}</Text>
           <Text style={styles.videoTitle}>{item.title}</Text>
 
-          <Text style={styles.videoInfoText}>{item.description}</Text>
-          <Text style={styles.videoInfoText}>
-            {new Date(item.created_at).toLocaleDateString()}
+          <Text style={styles.videoInfoTextDescription}>
+            {item.description}
           </Text>
-          <Text style={styles.videoInfoText}>
+
+          <Text style={styles.videoInfoTextTags}>
             {item.tags.map((tag) => tag + "  ")}
+          </Text>
+          <Text style={styles.videoInfoTextDate}>
+            {new Date(item.created_at).toLocaleDateString()}
           </Text>
 
           <Likes item={item} navigation={navigation} />

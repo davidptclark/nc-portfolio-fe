@@ -30,8 +30,9 @@ const styles = StyleSheet.create({
   },
   videoTitle: {
     color: "white",
-    textAlign: "right",
+    textAlign: "left",
     fontWeight: "bold",
+    fontSize: 20,
   },
   videoText: {
     textAlign: "center",
@@ -40,6 +41,31 @@ const styles = StyleSheet.create({
   videoInfoText: {
     color: "white",
   },
+  videoInfoTextUsername: {
+    fontSize: 13,
+    color: "white",
+    textAlign: "right",
+    opacity: 0.7,
+    fontWeight: "bold",
+  },
+  videoInfoTextDescription: {
+    fontSize: 15,
+    color: "white",
+    textAlign: "left",
+  },
+  videoInfoTextDate: {
+    fontSize: 12,
+    color: "white",
+    paddingTop: 5,
+    textAlign: "right",
+  },
+  videoInfoTextTags: {
+    fontSize: 12,
+    color: "white",
+    paddingTop: 5,
+    opacity: 0.5,
+  },
+
   video: {
     width: "100%",
     height: "100%",
@@ -52,8 +78,9 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   username: {
+    paddingTop: 12,
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 25,
   },
   bio: {
     textAlign: "center",
@@ -61,6 +88,7 @@ const styles = StyleSheet.create({
   },
   userType: {
     fontWeight: "bold",
+    fontSize: 16,
   },
   dropDown: { marginBottom: 0 },
   userVideoContainer: {
@@ -183,6 +211,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logoContainer: {
+    paddingTop: 40,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -209,6 +238,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: 70,
   },
   userSocial: {
     color: "purple",
