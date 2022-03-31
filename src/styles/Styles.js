@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
   videoTitle: {
     color: "white",
     textAlign: "right",
-
     fontWeight: "bold",
   },
   videoText: {
