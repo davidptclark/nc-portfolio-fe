@@ -4,7 +4,7 @@ import { View, Keyboard, TouchableWithoutFeedback } from "react-native";
 import CommentInput from "./CommentInput";
 import Comments from "./Comments";
 
-export default CommentsPage = ({ route }) => {
+export default CommentsPage = ({ navigation, route }) => {
   const item_id = route.params;
   const [comments, setComments] = useState([]);
   const [noOfComments, setNoOfComments] = useState("");
@@ -22,6 +22,7 @@ export default CommentsPage = ({ route }) => {
           comments={comments}
           setComments={setComments}
           noOfComments={noOfComments}
+          navigation={navigation}
         />
       </View>
     </TouchableWithoutFeedback>
