@@ -210,5 +210,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  userSocial: {
+    color: "purple",
+  },
 });
 export default styles;

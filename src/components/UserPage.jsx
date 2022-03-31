@@ -1,4 +1,4 @@
-import { Text, View, Image, ScrollView } from "react-native";
+import { Text, View, Image, ScrollView, Linking } from "react-native";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { LoginContext } from "../contexts/LoginContext";
@@ -18,11 +18,30 @@ export default UserPage = ({ navigation }) => {
         </View>
         <Image
           style={styles.avatarUrl}
-          source={user.avatar_url ? { uri: user.avatarUrl } : avatar}
+          source={user.avatar_url ? { uri: user.avatar_url } : avatar}
           defaultSource={avatar}
         />
         <Text style={styles.username}>{user.username}</Text>
         <Text style={styles.userType}>{user.type}</Text>
+        <Text
+          style={styles.userSocial}
+          onPress={() => {
+            Linking.canOpenURL(
+              user.social_url.slice(0, 8) === "https://"
+                ? user.social_url
+                : "https://" + user.social_url
+            ).then((result) => {
+              if (result)
+                Linking.openURL(
+                  user.social_url.slice(0, 8) === "https://"
+                    ? user.social_url
+                    : "https://" + user.social_url
+                );
+            });
+          }}
+        >
+          {user.social_url}
+        </Text>
         <Text style={styles.bio}>{user.bio}</Text>
       </View>
       <View>
