@@ -68,12 +68,12 @@ export default Upload = ({ navigation }) => {
         const videoData = {
           title: titleText,
           description: descriptionText,
-          cloudinary_id: data.asset_id,
+          cloudinary_id: data.public_id,
           tags: tags,
           username: user.username,
         };
 
-        return postVideoToDatabase(videoData, url, formData);
+        return postVideoToDatabase(videoData);
       })
       .then(() => {
         setIsLoading(false);
