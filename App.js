@@ -4,7 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 //Components
-import styles from "./src/styles/Styles";
 import BottomTabNavigator from "./src/navigation/TabNavigation";
 
 //Context
