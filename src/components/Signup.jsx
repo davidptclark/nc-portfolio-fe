@@ -11,9 +11,16 @@ import CustomButton from "./CustomButton";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useState } from "react";
 import bcrypt from "react-native-bcrypt";
+import isaac from "isaac";
 import { postUser } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import { LoginContext } from "../contexts/LoginContext";
+bcrypt.setRandomFallback((len) => {
+  const buf = new Uint8Array(len);
+
+  return buf.map(() => Math.floor(isaac.random() * 256));
+});
+
 function Signup() {
   const symbolRegex = /[~`!@#$%^&*()_\-+={[}\]|\\:;"'<,>.?/]/;
   const numberRegex = /[0-9]/;
@@ -42,6 +49,14 @@ function Signup() {
         setIsloading(false);
         setUser(user);
         setLoggedIn(true);
+      })
+      .catch((err) => {
+        setIsloading(false);
+        if (err.response.data.msg) {
+          alert("Username already exists");
+        } else {
+          alert("Something went wrong please try again");
+        }
       });
   };
   return isLoading ? (
