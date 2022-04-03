@@ -1,7 +1,7 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import { Dimensions } from "react-native";
 import { useEffect, useContext, useState } from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, RefreshControl } from "react-native";
 import { UserContext } from "../contexts/UserContext";
 
 import styles from "../styles/Styles";
@@ -12,6 +12,7 @@ import CustomUserVideo from "./CustomUserVideo";
 function UserVideos({ navigation }) {
   const { user } = useContext(UserContext);
   const [videos, setVideos] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
   const cld = new Cloudinary({
     cloud: {
       cloudName: "ncapp",
@@ -20,9 +21,23 @@ function UserVideos({ navigation }) {
   useEffect(() => {
     getVideos("", "", "", user.username).then(setVideos);
   }, []);
+  const wait = (timeout) => {
+    return new Promise((resolve) => setTimeout(resolve, timeout));
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    wait(2000).then(() => {
+      setRefreshing(false);
+    });
+  };
+
   return (
     <View>
       <FlatList
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         snapToInterval={Dimensions.get("window").height - 130}
         snapToAlignment={"start"}
         decelerationRate={"fast"}
