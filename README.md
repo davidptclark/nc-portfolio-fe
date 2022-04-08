@@ -1,4 +1,4 @@
-# Northcoders Portfolio
+# 🎓 Northcoders Portfolio 📽️
 
 ![Logo](https://0x0.st/obtD.png)
 
