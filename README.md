@@ -18,9 +18,9 @@ Hello! 👋 Welcome to our app - Northcoders Portfolio.
 
 ## 💭 Description
 
-Northcoders Porfolio is an app to help Northcoders graduates upload short video demonstrations of their projects to a centralised space, that recruiters and employers can efficiently access and browse.
+Northcoders Portfolio is an app to help Northcoders graduates upload short video demonstrations of their projects to a centralised space that recruiters and employers can efficiently access and browse.
 
-Typically, graduates are limited in visability due to the size of their network or limited reach due to a change in sector. Additionally, recruiters and employers have limited time and resources, which further adds to the issue of visability. We built this app with these challanges in mind, to aleviate frictions or barriers to visibility: allowing graduates to showcase their work, as well as reducing the workload on the employer side in finding newly-qualified graduates.
+Typically, graduates are limited in visibility due to the size of their network or limited reach due to a change in sector. Additionally, recruiters and employers have limited time and resources, which further adds to the issue of visibility. We built this app with these challenges in mind, to alleviate frictions or barriers to visibility: allowing graduates to showcase their work, as well as reducing the workload on the employer side in finding newly-qualified graduates.
 
 ## 🤔 What Does It Do?
 
@@ -40,7 +40,7 @@ Users can:
 
 ## 🧪 Technology
 
-- The app is built using React Native ⚛️ 
+- The app is built using React Native ⚛️
 
 - We've used Cloudinary as our cloud storage provider, which are brought down and rendered using the Expo-AV video player
 
@@ -67,4 +67,5 @@ Simply run `npm install` to install the necessary dependencies required.
 
 ### 🖥️ 📲 Building and running the site
 
-To build and run the site on your local machine, run `npm start`. After doing so, you'll need to use either the Expo Go app on your mobile device or an iOS/Android simulator on your local machine to run the app.
+To build and run the site on your local machine, run `npm start`. After doing so, you'll need to use either the Expo Go app on your mobile device or an iOS/Android emulator on your local machine to run the app.
+
