@@ -37,3 +37,27 @@ Users can:
 - ✅ 🗑️ Add and delete their comments on videos
 - 👀 Access other user's profiles
 - 🗑️ Delete their own videos
+
+## 🧪 Technology
+
+
+## 🖥️ Running the App Locally
+
+🚧 Before beginning setup, please check you have _at least_ these versions of the following:
+
+- `node` - v. 16.13.1
+
+After doing so, perform each step, in order:
+
+### 💻 ➡️ 💻 Cloning the repository
+
+```
+git clone https://github.com/davidptclark/nc-portfolio-fe.git
+```
+### 🏗️ Install required packages
+
+Simply run `npm install` to install the necessary dependencies required.
+
+### 🖥️ 📲 Building and running the site
+
+To build and run the site on your local machine, run `npm start`. After doing so, you'll need to use either the Expo Go app on your mobile device or an iOS/Android simulator on your local machine to run the app.
