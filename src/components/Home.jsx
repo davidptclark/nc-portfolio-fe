@@ -24,7 +24,7 @@ export default Home = ({ navigation }) => {
       setItems(
         apiTags.map(({ tag }) => {
           return { label: tag, value: tag };
-        }),
+        })
       );
     });
   }, []);
@@ -55,7 +55,6 @@ export default Home = ({ navigation }) => {
       created_at: video.created_at,
       description: video.description,
       tags: video.video_tag_array,
-      username: video.username,
     };
   });
 
@@ -89,7 +88,7 @@ export default Home = ({ navigation }) => {
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
-        snapToInterval={Dimensions.get("window").height - 180}
+        snapToInterval={Dimensions.get("window").height - 170}
         snapToAlignment={"start"}
         decelerationRate={"fast"}
         data={data}
