@@ -40,6 +40,11 @@ Users can:
 
 ## 🧪 Technology
 
+- The app is built using React Native ⚛️ 
+
+- We've used Cloudinary as our cloud storage provider, which are brought down and rendered using the Expo-AV video player
+
+- User authentication is achieved by storing hashed passwords on the backend and using bcrypt to compare and verify the hashed passwords
 
 ## 🖥️ Running the App Locally
 
