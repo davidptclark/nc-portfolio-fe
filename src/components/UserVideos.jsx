@@ -4,9 +4,6 @@ import { useEffect, useContext, useState } from "react";
 import { View, FlatList, RefreshControl } from "react-native";
 import { UserContext } from "../contexts/UserContext";
 
-import styles from "../styles/Styles";
-import CustomButton from "./CustomButton";
-
 import { getVideos } from "../utils/api";
 import CustomUserVideo from "./CustomUserVideo";
 function UserVideos({ navigation }) {

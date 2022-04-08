@@ -181,7 +181,6 @@ const styles = StyleSheet.create({
     flex: 1, //Keeps the loading wheel in the center of the page
     justifyContent: "center",
     alignContent: "center",
-    // flexShrink: 0,
   },
 
   input: {
